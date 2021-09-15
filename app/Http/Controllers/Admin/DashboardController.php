@@ -9,7 +9,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        dd('dsad');
+        // dd('dsad');
         return view('admin.dashboard.index');
     }
 }
