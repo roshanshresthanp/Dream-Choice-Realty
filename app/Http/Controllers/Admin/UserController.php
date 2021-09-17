@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
+
+
 
 
 class UserController extends Controller
@@ -18,9 +22,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        
-        $user = User::where('role','!=','office-staff')->get();
+        if(Gate::allows('isAdmin')){
+        $user = User::where('role','!=','office-staff')->latest()->get();
         return view('admin.user.index',compact('user'));
+        }
+        else
+        return view('admin.error.error');
     }
 
     /**
@@ -30,8 +37,11 @@ class UserController extends Controller
      */
     public function create()
     {
+        if(Gate::allows('isAdmin'))
         return view('admin.user.create');
-
+        else
+        return view('admin.error.error');
+        
     }
 
     /**
@@ -69,7 +79,7 @@ class UserController extends Controller
             $data['password'] = Hash::make($request->password);
 
         if(User::create($data))
-        return redirect('/admin/user')->with('success','User added');
+        return redirect('/admin/user')->with('success','User added successfully');
         else
         return redirect('admin/user')->with('error','Sorry user added failed');
 
@@ -94,8 +104,13 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        if(Gate::allows('isAdmin') || (Auth::user()->id==$id)){
         $user = User::find($id);
         return view('admin.user.edit',compact('user'));
+        }
+        else
+        return view('admin.error.error');
+
     }
 
     /**
@@ -134,7 +149,7 @@ class UserController extends Controller
             }
         
         if($user->update($data))
-        return redirect('admin/user')->with('success','User updated');
+        return redirect('admin/user')->with('success','User updated successfully');
         else
         return redirect('admin/user')->with('error','Sorry user updated failed');
 
@@ -150,8 +165,7 @@ class UserController extends Controller
     {
         $user = User::find($id)->delete();
         Storage::delete('public/images/user/'.$user->photo);
-        return redirect()->back()->with('success','User deleted');
+        return redirect()->back()->with('success','User deleted successfully');
         
-
     }
 }

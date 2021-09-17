@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,11 +28,19 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['as'=>'admin.', 'prefix'=>'admin', 'middleware'=>['auth']], function(){
 
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
+    Route::get('/owner-dashboard',[DashboardController::class,'ownerDashboard'])->name('owner.dashboard');
+    Route::get('/user-dashboard',[DashboardController::class,'userDashboard'])->name('user.dashboard');
+
+    
+
 
     Route::resource('/user', UserController::class);
+
+
+
     Route::get('/test',function()
     {
-        return view('admin.user.test');
+        return view('admin.error.error');
     });
 
     

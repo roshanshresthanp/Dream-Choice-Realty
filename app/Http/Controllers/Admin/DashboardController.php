@@ -12,4 +12,14 @@ class DashboardController extends Controller
         // dd('dsad');
         return view('admin.dashboard.index');
     }
+
+    public function ownerDashboard()
+    {
+
+    }
+
+    public function userDashboard()
+    {
+        
+    }
 }
