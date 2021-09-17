@@ -18,6 +18,8 @@ class AddRoleColumnToUsersTable extends Migration
             $table->string('address')->nullable();
             $table->string('contact')->nullable();
             $table->string('photo')->nullable();
+            $table->string('occupation')->nullable();
+
 
         });
     }

@@ -19,7 +19,9 @@ class UserSeeder extends Seeder
                 array(
                     'name' => 'Super Admin',
                     'email' => 'super@admin.com',
-                    'password' => bcrypt('password')
+                    'password' => bcrypt('password'),
+                    'role'=> 'office-staff',
+                    'address'=> 'Sydney, Australia'
                 ),
             ),
         );

@@ -28,6 +28,10 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'middleware'=>['auth']], functi
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
 
     Route::resource('/user', UserController::class);
+    Route::get('/test',function()
+    {
+        return view('admin.user.test');
+    });
 
     
 
