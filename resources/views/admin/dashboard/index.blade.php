@@ -1,5 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
+@can('isAdmin')
 <div class="container">
 	<!--begin::Dashboard-->
 	<!--begin::Row-->
@@ -3096,4 +3097,5 @@
 	<!--end::Row-->
 	<!--end::Dashboard-->
 </div>
+@endcan
 @endsection
