@@ -31,12 +31,9 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'middleware'=>['auth']], functi
     Route::get('/owner-dashboard',[DashboardController::class,'ownerDashboard'])->name('owner.dashboard');
     Route::get('/user-dashboard',[DashboardController::class,'userDashboard'])->name('user.dashboard');
 
-    
-
 
     Route::resource('/user', UserController::class);
-
-
+    
 
     Route::get('/test',function()
     {

@@ -122,19 +122,21 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $this->validate($request, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'contact' => 'required|string|max:255',
             'address'=>'nullable|string|max:255',
             'photo'=>'nullable|mimes:png,svg,jpeg,jpg',
-            'password'=>'required|string|min:8|same:password_confirmation',
-            'password_confirmation'=>'required|min:8',
             'role'=>'required|string|max:255',
             'occupation'=>'nullable|string|max:255'
 
 
         ]);
+
+        // dd($request->all());
+
         $data = $request->all();
         $user=User::find($id);
 
@@ -148,10 +150,11 @@ class UserController extends Controller
                 $data['photo'] = $photo;
             }
         
-        if($user->update($data))
+            $user->update($data);
+        if(Gate::allows('isAdmin'))
         return redirect('admin/user')->with('success','User updated successfully');
         else
-        return redirect('admin/user')->with('error','Sorry user updated failed');
+        return redirect('admin/dashboard')->with('success','User updated successfully');
 
     }
 

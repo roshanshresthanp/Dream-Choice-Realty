@@ -89,7 +89,7 @@
                     <label>Occupation
                     {{-- <span class="text-danger">*</span> --}}
                     </label>
-                    <input type="text" class="form-control @error('occupation') is-invalid @enderror" placeholder="Enter Occupation" name="occupation" value="@if(isset($user)){{$user->occupation}}@else{{old('occupation')}}@endif" required />
+                    <input type="text" class="form-control @error('occupation') is-invalid @enderror" placeholder="Enter Occupation" name="occupation" value="@if(isset($user)){{$user->occupation}}@else{{old('occupation')}}@endif" />
                     @error('occupation')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -137,11 +137,12 @@
                 <div class="form-group">
                     <label>User Type</label>
                     <select class="form-control" name="role">
-                        @if(isset($user->role) && $user->role == 'office-staff'))
-                        <option value="{{$user->role}}" selected="selected">Office Staff</option>
+                        @if(isset($user) && isset($user->role))
+                        <option value="{{$user->role}}" selected="selected">{{ucwords(str_replace('-',' ',$user->role))}}</option>
                         @else
-                        <option value="property-owner" @if(isset($user) && $user->role == 'property-owner')) selected="selected" @endif >Property Owner</option>
-                        <option value="rental-client" @if(isset($user) && $user->role == 'rental-client')) selected="selected" @endif >Rental Client</option>
+                        <option value="property-owner">Property Owner</option>
+                        <option value="rental-client">Rental Client</option>
+                        {{-- <option value="rental-client" @if(isset($user) && $user->role == 'rental-client')) selected="selected" @endif >Rental Client</option> --}}
                         @endif
                     </select>
                 </div> 
