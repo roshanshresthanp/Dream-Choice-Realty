@@ -28,19 +28,26 @@
                     <span class="menu-text">User</span>
                 </a>
             </li>
+            <li class="menu-item {{ request()->is('admin/properties')? 'menu-item-active' : '' }}" aria-haspopup="true">
+                <a href="{{route('admin.all.property')}}" class="menu-link">
+                    <span class="svg-icon menu-icon fa fa-home">
+                    </span>
+                    <span class="menu-text">Property</span>
+                </a>
+            </li>
             @elsecan('isOwner')
 
-            <li class="menu-item {{ request()->is('admin/room/*') || request()->is('admin/room') ? 'menu-item-active' : '' }}" aria-haspopup="true">
-                <a href="{{route('admin.user.index')}}" class="menu-link">
-                    <span class="svg-icon menu-icon fa fa-user">
+            <li class="menu-item {{ request()->is('admin/property/*') || request()->is('admin/property') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                <a href="{{route('admin.property.index')}}" class="menu-link">
+                    <span class="svg-icon menu-icon fa fa-home">
                     </span>
-                    <span class="menu-text">Room</span>
+                    <span class="menu-text">My Property</span>
                 </a>
             </li>
             @else
             <li class="menu-item {{ request()->is('admin/room/*') || request()->is('admin/room') ? 'menu-item-active' : '' }}" aria-haspopup="true">
                 <a href="{{route('admin.user.index')}}" class="menu-link">
-                    <span class="svg-icon menu-icon fa fa-user">
+                    <span class="svg-icon menu-icon fa fa-envelop">
                     </span>
                     <span class="menu-text">My Booking</span>
                 </a>

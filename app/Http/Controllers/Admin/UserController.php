@@ -166,8 +166,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id)->delete();
+        $user = User::find($id);
         Storage::delete('public/images/user/'.$user->photo);
+        $user->delete();
         return redirect()->back()->with('success','User deleted successfully');
         
     }
