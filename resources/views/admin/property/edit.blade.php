@@ -1,17 +1,15 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Edit User')
+@section('title', 'Edit Property')
 
 @section('breadcrumb')
 <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
 	<li class="breadcrumb-item text-muted">
 		<a href="{{route('admin.dashboard') }}" class="text-muted">Dashboard</a>
 	</li>
-    @can('isAdmin')
     <li class="breadcrumb-item text-muted">
-		<a href="{{ route('admin.user.index')}}" class="text-muted">Users</a>
+		<a href="{{ route('admin.property.index')}}" class="text-muted">Property</a>
 	</li>
-    @endcan
 	<li class="breadcrumb-item text-active">
 		<a href="" class="text-active">Edit</a>
 	</li>
@@ -24,10 +22,10 @@
         <div class="col-md-12">
             <!-- form start -->
 
-            <form action="{{route('admin.user.update',$user->id)}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('admin.property.update',$property->id)}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
-            @include('admin.user.form')
+            @include('admin.property.form')
             </form>
         </div>
     </div>
