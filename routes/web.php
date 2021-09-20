@@ -39,7 +39,4 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'middleware'=>['auth']], functi
     {
         return view('admin.error.error');
     });
-
-    
-
 });

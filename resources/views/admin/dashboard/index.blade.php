@@ -3097,9 +3097,5 @@
 	<!--end::Row-->
 	<!--end::Dashboard-->
 </div>
-<<<<<<< HEAD
-<p> hello </p>
-=======
 @endcan
->>>>>>> 254dac8eed0d460b8c8729dbc852055e93e97f03
 @endsection
