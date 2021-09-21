@@ -19,7 +19,7 @@ class CreatePropertiesTable extends Migration
             $table->string('name');
             $table->mediumText('description')->nullable();
             $table->string('featured_photo')->nullable();
-            $table->string('photo')->nullable();
+            $table->json('photo')->nullable();
             $table->double('rent')->nullable();
             $table->string('bedroom')->nullable();
             $table->string('bathroom')->nullable();
