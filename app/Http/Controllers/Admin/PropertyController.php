@@ -22,9 +22,12 @@ class PropertyController extends Controller
      */
     public function index()
     {
+        if(Gate::allows('isOwner')){
         $owner = User::find(Auth::user()->id);
         // dd($owner->property());
         return view('admin.property.index',compact('owner'));
+         }else
+    return view('admin.error.error');
     }
 
     /**
@@ -34,8 +37,10 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        if(Gate::allows('isOwner'))
-        return view('admin.property.create');
+        if(Gate::allows('isAdmin')){
+        $user = User::where('role','property-owner')->latest()->get();
+        return view('admin.property.create',compact('user'));
+        }
         else
         return view('admin.error.error');
 
@@ -50,7 +55,7 @@ class PropertyController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        if(Gate::denies('isClient')){
+        if(Gate::allows('isAdmin')){
         $this->validate($request, [
             'name' => 'required|string|max:255',
             'area' => 'required|string|max:255',
@@ -63,6 +68,7 @@ class PropertyController extends Controller
             'bathroom'=>'nullable|string|max:255',
             'bedroom'=>'nullable|string|max:255',
             'garage'=>'nullable|string|max:255',
+            'owner_id'=>'required'
         ]);
         $data = $request->all();
         if($request->hasFile('featured_photo')){
@@ -86,13 +92,13 @@ class PropertyController extends Controller
             }
             $data['photo'] = json_encode($img);    
         }
-        $data['owner_id'] = Auth::user()->id;
+        // $data['owner_id'] = Auth::user()->id;
 
             $pro = Property::create($data);
             if($pro)
-            return redirect('admin/property')->with('success','Property added successfully');
+            return redirect('admin/properties')->with('success','Property added successfully');
             else
-            return redirect('admin/property')->with('error','Property added failed');
+            return redirect('admin/properties')->with('error','Property added failed');
     }
 
     }
@@ -116,9 +122,10 @@ class PropertyController extends Controller
      */
     public function edit($id)
     {
-        if(Gate::allows('isOwner')){
+        if(Gate::allows('isAdmin')){
+        $user = User::where('role','property-owner')->latest()->get();
         $property = Property::find($id);
-        return view('admin.property.edit',compact('property'));
+        return view('admin.property.edit',compact('property','user'));
         }
         else
         return view('admin.error.error');
@@ -135,7 +142,6 @@ class PropertyController extends Controller
     public function update(Request $request, $id)
     {
         
-        if(Gate::denies('isClient')){
             $this->validate($request, [
                 'name' => 'required|string|max:255',
                 'area' => 'required|string|max:255',
@@ -185,11 +191,10 @@ class PropertyController extends Controller
             // $data['owner_id'] = Auth::user()->id;
     
                 
-                if($pro->update($data))
-                return redirect('admin/property')->with('success','Property updated successfully');
+                if(Gate::allows('isAdmin') && ($pro->update($data)))
+                return redirect('admin/properties')->with('success','Property updated successfully');
                 else
-                return redirect('admin/property')->with('error','Property updated failed');
-        }
+                return redirect('admin/properties')->with('error','Property updated failed');
     }
 
     /**

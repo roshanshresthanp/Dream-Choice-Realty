@@ -23,7 +23,7 @@
             @can('isAdmin')
             <li class="menu-item {{ request()->is('admin/user/*') || request()->is('admin/user') ? 'menu-item-active' : '' }}" aria-haspopup="true">
                 <a href="{{route('admin.user.index')}}" class="menu-link">
-                    <span class="svg-icon menu-icon fa fa-user">
+                    <span class="svg-icon menu-icon fa fa-users">
                     </span>
                     <span class="menu-text">User</span>
                 </a>
@@ -35,6 +35,20 @@
                     <span class="menu-text">Property</span>
                 </a>
             </li>
+            <li class="menu-item {{ request()->is('admin/bookings')? 'menu-item-active' : '' }}" aria-haspopup="true">
+                <a href="{{route('admin.all.booking')}}" class="menu-link">
+                    <span class="svg-icon menu-icon fa fa-envelope">
+                    </span>
+                    <span class="menu-text">Booking Requests</span>
+                </a>
+            </li>
+            <li class="menu-item {{ request()->is('admin/active-bookings')? 'menu-item-active' : '' }}" aria-haspopup="true">
+                <a href="{{route('admin.all.booking.active')}}" class="menu-link">
+                    <span class="svg-icon menu-icon fa fa-envelope">
+                    </span>
+                    <span class="menu-text">Active Booking</span>
+                </a>
+            </li>
             @elsecan('isOwner')
 
             <li class="menu-item {{ request()->is('admin/property/*') || request()->is('admin/property') ? 'menu-item-active' : '' }}" aria-haspopup="true">
@@ -44,10 +58,25 @@
                     <span class="menu-text">My Property</span>
                 </a>
             </li>
+            <li class="menu-item {{ request()->is('admin/tenant-list')? 'menu-item-active' : '' }}" aria-haspopup="true">
+                <a href="{{route('admin.tenant.list')}}" class="menu-link">
+                    <span class="svg-icon menu-icon fa fa-users">
+                    </span>
+                    <span class="menu-text">Tenant list</span>
+                </a>
+            </li>
+
+            <li class="menu-item {{ request()->is('admin/active-booking/*') ?'menu-item-active' : '' }}" aria-haspopup="true">
+                <a href="{{route('admin.booking.active')}}" class="menu-link">
+                    <span class="svg-icon menu-icon fa fa-envelope">
+                    </span>
+                    <span class="menu-text">Active Booking</span>
+                </a>
+            </li>
             @else
-            <li class="menu-item {{ request()->is('admin/room/*') || request()->is('admin/room') ? 'menu-item-active' : '' }}" aria-haspopup="true">
-                <a href="{{route('admin.user.index')}}" class="menu-link">
-                    <span class="svg-icon menu-icon fa fa-envelop">
+            <li class="menu-item {{ request()->is('admin/my-booking')? 'menu-item-active' : '' }}" aria-haspopup="true">
+                <a href="{{route('admin.booking.user.active')}}" class="menu-link">
+                    <span class="svg-icon menu-icon fa fa-envelope">
                     </span>
                     <span class="menu-text">My Booking</span>
                 </a>

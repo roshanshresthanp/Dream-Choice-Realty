@@ -9,6 +9,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
+
 
 
 
@@ -58,7 +60,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'contact' => 'required|string|max:255|unique:users',
-            'address'=>'nullable|string|max:255',
+            'address'=>'required|string|max:255',
             'photo'=>'nullable|mimes:png,svg,jpeg,jpg',
             'password'=>'required|string|min:8|same:password_confirmation',
             'password_confirmation'=>'required|min:8',
@@ -77,8 +79,8 @@ class UserController extends Controller
                 $data['photo'] = $photo;
             }
             $data['password'] = Hash::make($request->password);
-
-        if(User::create($data))
+            
+        if(Gate::allows('isAdmin') && User::create($data))
         return redirect('/admin/user')->with('success','User added successfully');
         else
         return redirect('admin/user')->with('error','Sorry user added failed');
@@ -127,7 +129,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'contact' => 'required|string|max:255',
-            'address'=>'nullable|string|max:255',
+            'address'=>'required|string|max:255',
             'photo'=>'nullable|mimes:png,svg,jpeg,jpg',
             'role'=>'required|string|max:255',
             'occupation'=>'nullable|string|max:255'
@@ -150,7 +152,9 @@ class UserController extends Controller
                 $data['photo'] = $photo;
             }
         
-            $user->update($data);
+           $up = $user->update($data);
+
+           
         if(Gate::allows('isAdmin'))
         return redirect('admin/user')->with('success','User updated successfully');
         else
