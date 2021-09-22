@@ -71,25 +71,22 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'middleware'=>['auth']], functi
     Route::delete('notification/read',function(){
         // dd($id);
         $not = Auth::user()->unreadNotifications;
-
         foreach($not as $n)
         $n->markAsRead();
         // dd($not);   
         // ->markAsRead();
-
         return redirect()->back()->with('success','Notification cleared');
-
         })->name('notification.destroy');
-
-
-
-    
 
     Route::get('/test',function()
     {
         return view('admin.error.error');
     });
 });
+
+Route::redirect('/home', '/');
+Route::post('/booking/create/{id}',[BookingController::class,'store'])->name('booking.store');
+
 
 
 

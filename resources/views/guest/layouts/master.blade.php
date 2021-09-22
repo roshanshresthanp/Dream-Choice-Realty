@@ -14,9 +14,15 @@
     
     <link href="{{asset('frontend/css/magnific-popup.css')}}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}" type="text/css" />
+
+    <!-- Toastr-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </head>
 <body>
-    
 <section class="header">
   <div class="container">
     <div class="row">
@@ -176,6 +182,7 @@
   </div>
 </footer>
 </body>
+@include('admin.layouts.message')
 <script src="https://use.fontawesome.com/b005d80e47.js"></script>
     <script src="{{asset('frontend\node_modules\jquery\dist\jquery.min.js')}}"></script>
     <script src="{{asset('frontend\node_modules\bootstrap\dist\js\bootstrap.min.js')}}"></script>

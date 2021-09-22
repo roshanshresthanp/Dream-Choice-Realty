@@ -23,7 +23,7 @@ class CreateBookingsTable extends Migration
 
             $table->string('address')->nullable();
             $table->string('previous_address')->nullable();
-            $table->date('appointment_date')->nullable();
+            $table->string('appointment_date')->nullable();
 
             $table->string('agreement')->nullable();
             $table->string('occupation')->nullable();

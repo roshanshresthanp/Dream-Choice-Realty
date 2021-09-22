@@ -15,6 +15,47 @@ use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
+    public function store(Request $request,$proId){
+
+        // dd(Property::find($proId)->owner_id);
+
+        // dd($request->all());
+        if(Gate::denies('isAdmin') && (Gate::denies('isOwner')))
+        {
+
+                $book = new Booking;
+                $book->previous_address = $request->previous_address;
+                $book->salary = $request->salary;
+                $book->appointment_date = $request->appointment_date;
+                $book->property_id = $proId;
+                $book->owner_id = Property::find($proId)->owner_id;
+            if(Auth::user())
+            {
+                $user= User::find(Auth::user()->id);
+                $book->user_id = Auth::user()->id;
+                $book->address = $user->address;
+                $book->contact =$user->contact;
+                $book->name =$user->name;
+                $book->occupation =$user->occupation;
+                $book->email =$user->email;
+
+            }
+            else{
+                $book->address = $request->address;
+                $book->contact =$request->contact;
+                $book->name =$request->name;
+                $book->occupation =$request->occupation;
+                $book->email =$request->email;
+
+            }
+            
+            $book->save();
+            return redirect()->back()->with('success','Booking request sent successfully');
+        }else
+
+        return redirect()->back()->with('error','Sorry ,You dont have privilege to perform this action');
+
+    }
     public function index()
     {
         //proprtyy owner active booking
