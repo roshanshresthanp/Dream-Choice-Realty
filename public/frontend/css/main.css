@@ -11,7 +11,7 @@
 }
 
 * {
-  font-family: 'Montserrat';
+  font-family: 'Helvetica';
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -159,6 +159,9 @@ a {
 
 .para_green {
   color: var(--primary-color);
+}
+a::after p{
+  color:black;
 }
 
 .para_gray {
@@ -375,11 +378,11 @@ img {
   z-index: 2;
   top: 0px;
   width: 100%;
-  padding: 7px 0px;
+  padding: 0px 0px;
   background: #ffffffe0;
   -webkit-box-shadow: 0px 0px 10px white;
           box-shadow: 0px 0px 10px white;
-  background-color:#52d972;
+  background-color:#dfe7de;
 }
 
 .header_box {
