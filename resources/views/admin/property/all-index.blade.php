@@ -14,16 +14,23 @@
 @endsection
 
 @section('css')
-<link href="https://cdn.datatables.net/1.11.2/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<link href="{{asset('admin/assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
+
+{{-- <link href="https://cdn.datatables.net/1.11.2/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" /> --}}
 @endsection
 @section('script')
-<script src="https://cdn.datatables.net/1.11.2/js/jquery.dataTables.min.js" ></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.11.2/js/dataTables.bootstrap4.min.js"></script>
+{{-- <script src="https://cdn.datatables.net/1.11.2/js/jquery.dataTables.min.js" ></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.2/js/dataTables.bootstrap4.min.js"></script> --}}
+
+<script src="{{asset('admin/assets/js/pages/crud/datatables/basic/scrollable.js')}}"></script>
+<script src="{{asset('admin/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
 <script>
     $(function () {
 
 $("#datatable").DataTable({
-  "responsive": true
+   "scrollY": 200,
+    "scrollX": true
+
 });
 });
 
@@ -67,15 +74,12 @@ function confirmation(e)
                 <h3 class="card-label">Table showing all property
                 {{-- <span class="d-block text-muted pt-2 font-size-sm">scrollable datatable with fixed height</span></h3> --}}
             </div>
-            {{-- <div class="card-toolbar">
-                <!--begin::Dropdown-->
-                <!--end::Dropdown-->
-                <!--begin::Button-->
+            <div class="card-toolbar">
                 <a href="{{route('admin.property.create')}}" class="btn btn-primary font-weight-bolder">
                 <span class="svg-icon svg-icon-md fa fa-plus">
                 </span>Add Property</a>
                 <!--end::Button-->
-            </div> --}}
+            </div>
         </div>
         <div class="card-body">
             <!--begin: Datatable-->
@@ -85,15 +89,15 @@ function confirmation(e)
                         <th>S.N</th>
                         <th>Name</th>
                         <th>Owner Name</th>
-                        {{-- <th>Description</th>
-                        <th>Facility</th> --}}
+                        <th>Description</th>
+                        <th>Facility</th>
                         <th>Rent</th>
                         <th>Bedroom</th>
                         <th>Bathroom</th>
                         <th>Garage</th>
                         <th>Area</th>
                         <th>Location</th>
-                        {{-- <th>Actions</th> --}}
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -103,8 +107,8 @@ function confirmation(e)
                             <td>{{$loop->iteration}}</td>
                             <td>{{$property->name}}</td>
                             <td>@if(isset($user)) @foreach($user as $own) @if($own->id == $property->owner_id)<span class="badge badge-info"> {{$own->name}} </span> @endif @endforeach @endif </td>
-                            {{-- <td>{{str_limit($property->description,300)}}</td>
-                            <td>{{str_limit($property->facility,300)}}</td> --}}
+                            <td>{!!str_limit($property->description,300)!!}</td>
+                            <td>{!!str_limit($property->facility,300)!!}</td>
                             <td>{{$property->rent}}</td>
                             <td>{{$property->bedroom}}</td>
                             <td>{{$property->bathroom}}</td>
@@ -112,16 +116,18 @@ function confirmation(e)
                             <td>{{$property->area}}</td>
                             <td>{{$property->location}}</td>
                             
-                            {{-- <td> 
+                            <td> 
                                 <form id="myform" action="{{route('admin.property.destroy', $property->id) }}" method="post">
                                     @method('delete')
                                     @csrf
                                     <a href="{{route('admin.property.edit',$property->id)}}"><span class="fa fa-edit"></span></a> &nbsp;&nbsp;
+
+                                    {{-- <input type="submit" class="fa fa-trash" value="jh" title="Delete" onclick="confirmation(event)"><i class="fa fa-trash"></i> --}}
                                     <a href="#" onclick="confirmation(event)"><span class="fa fa-trash"></span> </a>
 
                                     
                                 </form>
-                            </td> --}}
+                            </td>
                         </tr>
                         @endforeach
                     

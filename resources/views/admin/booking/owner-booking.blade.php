@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Property')
+@section('title', 'Active Booking')
 
 @section('breadcrumb')
 <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
@@ -8,7 +8,7 @@
 		<a href="{{route('admin.dashboard') }}" class="text-muted">Dashboard</a>
 	</li>
 	<li class="breadcrumb-item text-active">
-		<a href="{{ route('admin.property.index')}}" class="text-active">Property</a>
+		<a href="{{ route('admin.booking.active')}}" class="text-active">Active Booking</a>
 	</li>
 </ul>
 @endsection
@@ -22,17 +22,18 @@
 {{-- <script src="https://cdn.datatables.net/1.11.2/js/jquery.dataTables.min.js" ></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.2/js/dataTables.bootstrap4.min.js"></script> --}}
 
-<script src="{{asset('admin/assets/js/pages/crud/datatables/basic/scrollable.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
+ <script src="{{asset('admin/assets/js/pages/crud/datatables/basic/scrollable.js')}}"></script>
+ <script src="{{asset('admin/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
+
 <script>
-    $(function () {
+$(function () {
 
 $("#datatable").DataTable({
-    "scrollY": 200,
+//   "responsive": true
+  "scrollY": 200,
         "scrollX": true
 });
 });
-
 function confirmation(e)
       {
         if(confirm('Are you sure to delete this record? Once delete cannot be recovered!'))
@@ -43,6 +44,8 @@ function confirmation(e)
           e.preventDefault();
         }
       }
+
+      
     </script>
     
 
@@ -66,70 +69,11 @@ function confirmation(e)
             <div class="alert-text">This example shows a vertically scrolling DataTable that makes use of the CSS3 vh unit in order to dynamically resize the viewport based on the browser window height.</div>
         </div> --}}
     <!--end::Notice-->
-    
     <!--begin::Card-->
     <div class="card card-custom gutter-b">
         <div class="card-header flex-wrap border-0 pt-6 pb-0">
             <div class="card-title mb-0">
-                <h5 class="card-label">Table showing property
-                {{-- <span class="d-block text-muted pt-2 font-size-sm">Scrollable Horizontal &amp; Vertical DataTable</span></h5> --}}
-            </div>
-            {{-- <div class="card-toolbar text-right">
-                <a href="{{route('admin.property.create')}}" class="btn btn-primary font-weight-bolder">
-                <span class="svg-icon svg-icon-md fa fa-plus">
-                </span>Add Property</a>
-                <!--end::Button-->
-            </div> --}}
-        </div>
-        <div class="card-body">
-            <!--begin: Datatable-->
-            <table class="table table-separate table-head-custom table-checkable" id="datatable">
-                <thead>
-                    <tr>
-                        <th>S.N</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Facility</th>
-                        <th>Rent</th>
-                        <th>Bedroom</th>
-                        <th>Bathroom</th>
-                        <th>Garage</th>
-                        <th>Area</th>
-                        <th>Location</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if(isset($owner) && isset($owner->property) )
-                        @foreach ($owner->property as $property)
-                        <tr>
-                            <td>{{$loop->iteration}}</td>
-                            <td>{{$property->name}}</td>
-                            <td>{!!str_limit($property->description,300)!!}</td>
-                            <td>{!!str_limit($property->facility,300)!!}</td>
-                            <td>{{$property->rent}}</td>
-                            <td>{{$property->bedroom}}</td>
-                            <td>{{$property->bathroom}}</td>
-                            <td>{{$property->garage}}</td>
-                            <td>{{$property->area}}</td>
-                            <td>{{$property->location}}</td>
-                            
-                            
-                        </tr>
-                        @endforeach
-                    
-                    @endif
-                </tbody>
-            </table>
-            <!--end: Datatable-->
-        </div>
-    </div>
-    <!--end::Card-->
-
-    <!--begin::Card-->
-    <div class="card card-custom gutter-b">
-        <div class="card-header flex-wrap border-0 pt-6 pb-0">
-            <div class="card-title mb-0">
-                <h5 class="card-label">Table showing property
+                <h5 class="card-label">Table showing active booking
                 {{-- <span class="d-block text-muted pt-2 font-size-sm">Scrollable Horizontal &amp; Vertical DataTable</span></h5> --}}
             </div>
             {{-- <div class="card-toolbar">
@@ -220,38 +164,64 @@ function confirmation(e)
                 <thead>
                     <tr>
                         <th>S.N</th>
+                        <th>Date</th>
                         <th>Name</th>
-                        <th>Description</th>
-                        <th>Facility</th>
-                        <th>Rent</th>
-                        <th>Bedroom</th>
-                        <th>Bathroom</th>
-                        <th>Garage</th>
-                        <th>Area</th>
-                        <th>Location</th>
+                        <th>Salary</th>
+                        <th>Email</th>
+                        <th>Contact</th>
+                        <th>Property</th>
+                        <th>Address</th>
+                        <th>Previous Address</th>
+                        <th>Agreement</th>
+                        <th>Occupation</th>
+                        <th>Price</th>
+                        {{-- <th>Status</th> --}}
+
+                        {{-- <th>Area</th>
+                        <th>Location</th> --}}
+                        {{-- <th>Actions</th> --}}
                     </tr>
                 </thead>
                 <tbody>
                     
-                    @if(isset($owner) && isset($owner->property) )
-                    @foreach ($owner->property as $property)
-                    <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td>{{$property->name}}</td>
-                        <td>{!!str_limit($property->description,300)!!}</td>
-                        <td>{!!str_limit($property->facility,300)!!}</td>
-                        <td>{{$property->rent}}</td>
-                        <td>{{$property->bedroom}}</td>
-                        <td>{{$property->bathroom}}</td>
-                        <td>{{$property->garage}}</td>
-                        <td>{{$property->area}}</td>
-                        <td>{{$property->location}}</td>
+                    @if(isset($owner) )
+                        @foreach ($owner->ownerBooking as $book)
+                        @if($book->status==1 && $book->approve==1)
+                        <tr>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$book->created_at}}</td>
+                            <td>{{$book->name}}</td>
+                            <td>{{$book->salary}}</td>
+                            <td>{{$book->email}} </td>
+                            <td>{{$book->contact}}</td>
+                            <td>@if(isset($property)) @foreach($property as $own) @if($own->id == $book->property_id) {{$own->name}} </span> @endif @endforeach @endif </td>
+                            <td>{{$book->address}}</td>
+                            <td>{{$book->previous_address}}</td>
+                            <td>{{$book->agreement}}</td>
+                            <td>{{$book->occupation}}</td>
+                            
+                            {{-- <td>{{str_limit($book->description,300)}}</td>
+                            <td>{{str_limit($book->facility,300)}}</td> --}}
+                            
+                            <td>{{$book->price}}</td>
+                            {{-- <td>@if($book->approve==1) <span class="badge badge-success">Approved</span> @else <a href="{{route('admin.booking.approve',$book->id)}}"><span class="btn btn-info">Approve</span></a>@endif</td> --}}
+                            
+                            {{-- <td> 
+                                <form id="myform" action="{{route('admin.booking.destroy', $book->id) }}" method="post">
+                                    @method('delete')
+                                    @csrf
+                                    <a href="#" onclick="confirmation(event)"><span class="fa fa-trash"></span> </a>
+
+                                    
+                                </form>
+                            </td> --}}
+                        </tr>
+                        @endif
+                        @endforeach
                         
-                        
-                    </tr>
-                    @endforeach
-                
-                @endif
+                    
+                    @endif
+                    
                 </tbody>
             </table>
             <!--end: Datatable-->

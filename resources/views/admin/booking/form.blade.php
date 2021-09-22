@@ -111,7 +111,7 @@
                             @if(isset($property) && isset($property->garage))
                             <option value="{{$property->garage}}" selected="selected">{{$property->garage}}</option>
                             @endif
-                            @for($i=1;$i<=10;$i++)
+                            @for($i=1;$i<=10    ;$i++)
                             <option value="{{$i}}">{{$i}}</option>
                             @endfor
                         </select>
@@ -181,20 +181,6 @@
                     </span>
                     @enderror
                 </div> --}}
-                <div class="form-group">
-                    <label>Property Owner</label>
-                    <select class="form-control" name="owner_id">
-                        @if(isset($property->owner_id))
-                        <option value="{{$property->owner_id}}" selected="selected">@foreach($user as $owner)@if($owner->id==$property->owner_id) {{$owner->name}} @endif @endforeach</option>
-                        @endif
-
-                        @forelse($user as $owner)
-                        <option value="{{$owner->id}}">{{$owner->name}}</option>
-                        @empty
-                        <p>No Property Owner</p>
-                        @endforelse
-                    </select>
-                </div>
                 
 
                 <div class="form-group row">
