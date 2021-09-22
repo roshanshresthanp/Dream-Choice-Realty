@@ -82,9 +82,9 @@
     <div class="row ">
       <div class="col-lg-3 col-md-4 col-sm-6 pb-4">
         <div class="logo">
-          <a href="index.php">
+          <!-- <a href="index.php">
             <img src="frontend\assets\image\logo (4).png" alt="">
-          </a>
+          </a> -->
           
         </div>
         <p class="para-two para_white">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse quae reiciendis deserunt. Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
@@ -118,13 +118,7 @@
               <a href="index.php" class="para-two text-blue_light">home</a>
             </li>
             <li>
-              <a href="service.php" class="para-two text-blue_light">Services</a>
-            </li>
-            <li>
-              <a href="rooms.php" class="para-two text-blue_light">Rooms</a>
-            </li>
-            <li>
-              <a href="gallery.php" class="para-two text-blue_light">gallery</a>
+              <a href="rooms.php" class="para-two text-blue_light">Poperties</a>
             </li>
             <li>
               <a href="contact.php" class="para-two text-blue_light">Contact</a>
@@ -134,12 +128,12 @@
       </div>
 
       <div class="col-lg-3 col-md-4 col-sm-6 pb-4 ">
-        <h1 class="head-four text-white f-w-4 pb-4">Rooms</h1>
+        <h1 class="head-four text-white f-w-4 pb-4">Properties</h1>
         <div class=" footer-rooms">
           <div class="footer-rooms-box">
             <img src="frontend\assets\image\rooms.png" alt="">
           </div>
-          <div class="px-2">
+          <!-- <div class="px-2">
             <p class="para-two f-w-3 text-blue_light">Delux</p>
             <span class="para-two text-white">From <span class="value">Rs. </span><span>300</span></span>
           </div>
@@ -162,36 +156,22 @@
             <span class="para-two text-white">From <span class="value">Rs. </span><span>300</span></span>
           </div>
         </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 pb-4">
-        <h1 class="head-four text-white f-w-4 pb-4">Map</h1>
-        <div class="footer-rooms-box">
+      </div> -->
+      <!-- <div class="col-lg-3 col-md-4 col-sm-6 pb-4">
+        <h1 class="head-four text-white f-w-4 pb-4">Map</h1> -->
+        <!-- <div class="footer-rooms-box">
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.097062842056!2d85.31605341501488!3d27.683394782801777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19f1a12ed15f%3A0xd2addf7cee6a8e0b!2sLet%20IT%20Grow!5e0!3m2!1sen!2snp!4v1627380118358!5m2!1sen!2snp" width="100%" height="300" style="border:0" allowfullscreen="" loading="lazy"></iframe>
-        </div>
+        </div> -->
         
       </div>
       <div class="col-12">
         <div class="row align-items-center">
           <div class="col-md-6 ">
             <div class="copyright">
-              <p class=" para-two text-white"> <span class="text-blue_light f-w-6">TRIMURTI HOTEL</span> @copyRight reserved</p>
+              <p class=" para-two text-white"> <span class="text-blue_light f-w-6">DREAM CHOICE REALTY</span> @copyRight reserved</p>
             </div>
           </div>
-          <div class="col-md-6  ">
-            <div class="payments">
-              <p class="para-two f-w-6 text-white px-2">Payments:</p>
-              <div class="method">
-                <img src="frontend\assets\image\esewa.png" alt="">
-              </div>
-              <div class="method">
-                <img src="frontend\assets\image\khalti.png" alt="">
-              </div>
-              <div class="method">
-                <img src="frontend\assets\image\ime pay.png" alt="">
-              </div>
-            </div>
-          </div>
-        </div>
+          
         
       </div>
     </div>
