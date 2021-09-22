@@ -83,7 +83,7 @@
                   <img src="{{asset('storage/images/property/'.$pro->featured_photo)}}" alt="aaa">
                 </div>
                 <div class="rooms-info text-center">
-                  <span class="price">From <span class="value">Rs. </span><span>{{$pro->rent}}</span></span>
+                  <span class="price">From <span class="value">AUD </span><span>{{$pro->rent}}</span></span>
                   <h1 class="head-four head_red pb-3 f-w-5"> {{$pro->name}}</h1>
                   <p class="para-two para_gray " style="color:red;">{!!str_limit($pro->facility,20)!!}</p>
                   <div class="rooms-scale">
