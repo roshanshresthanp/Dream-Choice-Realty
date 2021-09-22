@@ -4,9 +4,14 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\AdminController;
+
+
+
+
+
+use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Admin\BookingController;
 use Illuminate\Http\Request;
-
 
 
 use Illuminate\Support\Facades\Route;
@@ -32,7 +37,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::group(['as'=>'admin.', 'prefix'=>'admin', 'middleware'=>['auth']], function(){
@@ -86,4 +91,23 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'middleware'=>['auth']], functi
     });
 });
 
+
+
+
+
+
+
+
+
+
+
+Route::get('/property',[IndexController::class,'property'])->name('property');
+Route::get('/view-property/{id}',[IndexController::class,'propertyDetail'])->name('property.view');
+Route::post('/search-property',[IndexController::class,'search'])->name('search.view');
+
+// Route::post('/test',function(Request $request)
+//     {
+//         dd($request->all());
+//         // return view('admin.error.error');
+//     })->name('search.view');
 
