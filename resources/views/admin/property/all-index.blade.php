@@ -28,7 +28,7 @@
     $(function () {
 
 $("#datatable").DataTable({
-   "scrollY": 200,
+//    "scrollY": 200,
     "scrollX": true
 
 });
@@ -38,7 +38,8 @@ function confirmation(e)
       {
         if(confirm('Are you sure to delete this record? Once delete cannot be recovered!'))
         {
-          return document.getElementById('myform').submit();
+          return true;
+        //    document.getElementById('myform').submit();
         }
         else{
           e.preventDefault();
@@ -122,8 +123,8 @@ function confirmation(e)
                                     @csrf
                                     <a href="{{route('admin.property.edit',$property->id)}}"><span class="fa fa-edit"></span></a> &nbsp;&nbsp;
 
-                                    {{-- <input type="submit" class="fa fa-trash" value="jh" title="Delete" onclick="confirmation(event)"><i class="fa fa-trash"></i> --}}
-                                    <a href="#" onclick="confirmation(event)"><span class="fa fa-trash"></span> </a>
+                                   <a> <button type="submit" class="fa fa-trash" title="Delete" onclick="confirmation(event)"></a>    
+                                    {{-- <a href="#" onclick="confirmation(event)"><span class="fa fa-trash"></span> </a> --}}
 
                                     
                                 </form>

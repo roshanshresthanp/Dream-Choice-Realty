@@ -28,6 +28,13 @@
                     <span class="menu-text">User</span>
                 </a>
             </li>
+            <li class="menu-item {{ request()->is('admin/appointment-date') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                <a href="{{route('admin.appointment-date.index')}}" class="menu-link">
+                    <span class="svg-icon menu-icon fa fa-calendar-alt">
+                    </span>
+                    <span class="menu-text">Appointment Date</span>
+                </a>
+            </li>
             <li class="menu-item {{ request()->is('admin/properties')? 'menu-item-active' : '' }}" aria-haspopup="true">
                 <a href="{{route('admin.all.property')}}" class="menu-link">
                     <span class="svg-icon menu-icon fa fa-home">

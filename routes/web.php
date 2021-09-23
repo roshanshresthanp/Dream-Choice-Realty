@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AppointmentDateController;
 
 
 
@@ -47,6 +48,8 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'middleware'=>['auth']], functi
 
     Route::resource('/user', UserController::class);
     Route::resource('/property', PropertyController::class);
+    Route::resource('/appointment-date', AppointmentDateController::class);
+
     Route::get('/properties',[AdminController::class,'property'])->name('all.property');
 
 

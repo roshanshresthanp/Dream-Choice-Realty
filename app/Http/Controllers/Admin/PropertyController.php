@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AppointmentDate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +40,8 @@ class PropertyController extends Controller
     {
         if(Gate::allows('isAdmin')){
         $user = User::where('role','property-owner')->latest()->get();
-        return view('admin.property.create',compact('user'));
+        $dates = AppointmentDate::all();
+        return view('admin.property.create',compact('user','dates'));
         }
         else
         return view('admin.error.error');
@@ -54,7 +56,7 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        // dd($request->all()) ;
         if(Gate::allows('isAdmin')){
         $this->validate($request, [
             'name' => 'required|string|max:255',
@@ -68,7 +70,8 @@ class PropertyController extends Controller
             'bathroom'=>'nullable|string|max:255',
             'bedroom'=>'nullable|string|max:255',
             'garage'=>'nullable|string|max:255',
-            'owner_id'=>'required'
+            'owner_id'=>'required',
+            'date_id'=>'nullable|date'
         ]);
         $data = $request->all();
         if($request->hasFile('featured_photo')){
@@ -95,6 +98,12 @@ class PropertyController extends Controller
         // $data['owner_id'] = Auth::user()->id;
 
             $pro = Property::create($data);
+            if($request->has('date_id'))
+            {   
+                $pro->appointmentDate()->attach($request->date_id); //Many to Many 
+                $pro->save();
+            }
+
             if($pro)
             return redirect('admin/properties')->with('success','Property added successfully');
             else
@@ -123,9 +132,10 @@ class PropertyController extends Controller
     public function edit($id)
     {
         if(Gate::allows('isAdmin')){
+            $dates = AppointmentDate::all();
         $user = User::where('role','property-owner')->latest()->get();
         $property = Property::find($id);
-        return view('admin.property.edit',compact('property','user'));
+        return view('admin.property.edit',compact('property','user','dates'));
         }
         else
         return view('admin.error.error');
@@ -189,7 +199,10 @@ class PropertyController extends Controller
             }
 
             // $data['owner_id'] = Auth::user()->id;
-    
+            $pro->update($data);
+                    $pro->appointmentDate()->detach();
+                    $pro->appointmentDate()->attach($request->date_id);
+                    $pro->save();    
                 
                 if(Gate::allows('isAdmin') && ($pro->update($data)))
                 return redirect('admin/properties')->with('success','Property updated successfully');

@@ -227,6 +227,41 @@
                     </span>
                     @enderror
                 </div>
+
+                @if(isset($property))
+                <div class="form-group">
+                  <label>{{ __('Select Appointment DateTime') }}</label>
+                      @if(count($dates)>0)
+                            @foreach($dates as $date)
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="{{$date->id}}" id="defaultCheck1"
+                                  name="date_id[]" @foreach($property->appointmentDate as $feat)  
+                                  @if($date->id === $feat->id) checked @endif
+                              @endforeach >
+                              <label class="form-check-label" for="result">
+                                  {{$date->appointment_date}}
+                              </label>
+                            </div> 
+
+                            @endforeach
+                       @endif
+                 </div>
+            @else
+              <div class="form-group">
+                <label>{{ __('Select Appointment DateTime') }}</label>
+                @if(count($dates)>0)
+                          @foreach($dates as $date)
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="{{$date->id}}" id="defaultCheck1"
+                                name="date_id[]">
+                            <label class="form-check-label">
+                                {{$date->appointment_date}}
+                            </label>
+                          </div>  
+                          @endforeach
+                     @endif
+              </div>
+            @endif
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>

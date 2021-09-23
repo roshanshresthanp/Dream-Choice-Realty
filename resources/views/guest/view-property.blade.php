@@ -153,10 +153,13 @@
                             <div class="col-md-12">
                               <div class="form-group mb-2 position-relative">
                                 <select class="form-control" name="appointment_date">
-                                  <option>Select Time</option>
-                                  <option>Delux</option>
-                                  <option>Standured</option>
-                                  <option>Studio</option>
+                                  <option>Choose Appointment Time</option>
+                                  @isset($pro->appointmentDate)
+                                  @foreach($pro->appointmentDate as $date) 
+                                  
+                                  <option value="{{$date->id}}">{{$date->appointment_date}}</option>
+                                  @endforeach 
+                                  @endisset
                                 </select>
                                 <div class="icon">
                                   <img class="calendar" src="{{asset('frontend\assets\image\calendar.png')}}" alt="">

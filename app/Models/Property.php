@@ -14,4 +14,9 @@ class Property extends Model
     ];
     // protected $fillable = array('*');
 
+
+    public function appointmentDate()
+    {
+        return $this->belongsToMany(AppointmentDate::class,'property_dates','property_id','date_id');
+    }
 }
