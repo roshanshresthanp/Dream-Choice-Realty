@@ -166,10 +166,10 @@
             <h5 class="mb-5">Recent Notifications</h5>
             @if(count(Auth::user()->unreadNotifications)>0)
             <p>
-            <form id="myform" action="{{route('admin.notification.destroy')}}" method="post">
+            <form id="not" action="{{route('admin.notification.destroy')}}" method="post">
                 @method('delete')
                 @csrf
-                <a href="#" onclick="document.getElementById('myform').submit();">Clear all<span class="fa fa-times ml-2"></span> </a>
+                <a href="#" onclick="document.getElementById('not').submit();">Clear all<span class="fa fa-times ml-2"></span> </a>
 
                 
             </form>            </p>
@@ -178,8 +178,8 @@
                 @foreach(Auth::user()->unreadNotifications as $notification)
                 <div role="clear" class="d-flex align-items-center bg-light-success rounded p-5 gutter-b">
                     <div class="d-flex flex-column flex-grow-1 mr-2">
-                        <a href="#" class="font-weight-normal text-dark-75 text-hover-primary font-size-lg mb-1"> @foreach($notification->data as $da) {{$da['address']}} {{$da['name']}} @endforeach</a>
-                        <span class="text-muted font-size-sm">{{$notification->created_at}}</span>
+                        <a href="#" class="font-weight-normal text-dark-75 text-hover-primary font-size-lg mb-1"> @foreach($notification->data as $da) {{$da['info']}}  <b>{{$da['name']}}</b> @endforeach</a>
+                        <span class="text-muted font-size-sm"> @foreach($notification->data as $da) {{$da['date']}} @endforeach</span>
                     </div>
                     {{-- <span class="font-weight-bolder text-warning py-1 font-size-md">
                         ghjfg</span> --}}

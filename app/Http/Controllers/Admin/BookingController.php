@@ -6,12 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\Property;
 use App\Models\User;
-use Illuminate\Support\Facades\Notification;
-use App\Notifications\allNotification;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
+use Helper;
 
 class BookingController extends Controller
 {
@@ -38,6 +37,7 @@ class BookingController extends Controller
                 $book->name =$user->name;
                 // $book->occupation =$user->occupation;
                 $book->email =$user->email;
+                $userName = $user->name;
 
             }
             else{
@@ -46,10 +46,15 @@ class BookingController extends Controller
                 $book->name =$request->name;
                 // $book->occupation =$request->occupation;
                 $book->email =$request->email;
+                $userName = $request->name;
 
             }
             
-            $book->save();
+            // $book->save();
+            $admin = User::where('role','office-staff')->first();
+            $info='You have recieved a new booking request from ';
+             {{Helper::notification($admin,$info,$userName);}}
+
             return redirect()->back()->with('success','Booking request sent successfully');
         }else
 
@@ -116,13 +121,20 @@ class BookingController extends Controller
         if($book->status == 0)
         $book->status =1;
         $book->save();
-        
-        // $user 
-        // $detail =[
-        //     'name'=> $request->name,
-        //     'address'=>$request->address
+
+        // $booking
+        $pro = Property::find($book->property_id);
+        $owner = User::find($book->owner_id);
+        $name = $pro->name;
+        //     $detail =[
+        //     'date'=>date("F j, Y, g:i a"),
+        //     'name'=> $pro->name,
+        //     'info'=>'You have recieved a new tenant request for '
         // ];
-        // Notification::send($user, new allNotification($detail));
+        // Notification::send($owner, new allNotification($detail));
+        {{Helper::notification($owner,'You have recieved a new tenant request for ',$name);}}
+
+        
 
         return redirect()->back()->with('success','Booking request has sent to Property Owner');
     }
@@ -131,7 +143,22 @@ class BookingController extends Controller
         $book = Booking::find($id);
         if($book->approve == 0)
         $book->approve=1;
-        $book->save();
+        // $book->save();
+
+        $pro = Property::find($book->property_id);
+        $client = User::find($book->user_id);
+
+        if(isset($book->user_id))
+        {
+            $pro = Property::find($book->property_id);
+            {{Helper::notification($client,'Your booking request is approved for ',$pro->name);}}
+
+        }
+        $admin = User::where('role','office-staff')->first();
+        $info='Property owner has assigned ' .$pro->name.'  to ';
+        {{Helper::notification($admin,$info,$client->name);}}
+
+        
 
         return redirect()->back()->with('success','Booking request has approved');
     }

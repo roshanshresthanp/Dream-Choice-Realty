@@ -71,7 +71,7 @@ class PropertyController extends Controller
             'bedroom'=>'nullable|string|max:255',
             'garage'=>'nullable|string|max:255',
             'owner_id'=>'required',
-            'date_id'=>'nullable|date'
+            'date_id'=>'nullable'
         ]);
         $data = $request->all();
         if($request->hasFile('featured_photo')){
