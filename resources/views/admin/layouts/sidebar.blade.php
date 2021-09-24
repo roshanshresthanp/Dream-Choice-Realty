@@ -73,7 +73,7 @@
                 </a>
             </li>
 
-            <li class="menu-item {{ request()->is('admin/active-booking/*') ?'menu-item-active' : '' }}" aria-haspopup="true">
+            <li class="menu-item {{ request()->is('admin/active-booking') ?'menu-item-active' : '' }}" aria-haspopup="true">
                 <a href="{{route('admin.booking.active')}}" class="menu-link">
                     <span class="svg-icon menu-icon fa fa-envelope">
                     </span>

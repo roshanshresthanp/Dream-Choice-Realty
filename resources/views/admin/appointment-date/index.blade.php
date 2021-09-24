@@ -26,22 +26,7 @@ $("#datatable").DataTable({
   "responsive": true
 });
 });
-
-function confirmation(e)
-      {
-        if(confirm('Are you sure to delete this record? Once delete cannot be recovered!'))
-        {
-          return true;
-          // document.getElementById('myform').submit();
-        }
-        else{
-          e.preventDefault();
-        }
-      }
     </script>
-    
-
-
 @endsection
 
 {{-- 
@@ -110,9 +95,8 @@ function confirmation(e)
                                 <form id="myform" action="{{route('admin.appointment-date.destroy', $datetime->id) }}" method="post">
                                     @method('delete')
                                     @csrf
-                                    <a href="#" onclick="confirmation(event)"><span class="fa fa-trash"></span> </a>
-
-                                    
+                                    {{-- <a href="#" onclick="confirmation(event)"><span class="fa fa-trash"></span> </a> --}}
+                                    <button type="submit" onclick="return confirm('Are you sure you want to delete this item?');" class="fas fa-trash" ></button>
                                 </form>
                             </td>
                         </tr>

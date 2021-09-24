@@ -165,16 +165,17 @@ function confirmation(e)
                     <tr>
                         <th>S.N</th>
                         <th>Date</th>
+                        <th>Appointment Date</th>
                         <th>Name</th>
-                        <th>Salary</th>
+                        {{-- <th>Salary</th> --}}
                         <th>Email</th>
                         <th>Contact</th>
                         <th>Property</th>
-                        <th>Address</th>
-                        <th>Previous Address</th>
+                        {{-- <th>Address</th>
+                        <th>Previous Address</th> --}}
                         <th>Agreement</th>
-                        <th>Occupation</th>
-                        <th>Price</th>
+                        {{-- <th>Occupation</th>
+                        <th>Price</th> --}}
                         <th>Status</th>
 
                         {{-- <th>Area</th>
@@ -190,20 +191,21 @@ function confirmation(e)
                         <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>{{$book->created_at}}</td>
+                            <td>{{$book->appointment_date}}</td>
                             <td>{{$book->name}}</td>
-                            <td>{{$book->salary}}</td>
+                            {{-- <td>{{$book->salary}}</td> --}}
                             <td>{{$book->email}} </td>
                             <td>{{$book->contact}}</td>
                             <td>@if(isset($property)) @foreach($property as $own) @if($own->id == $book->property_id) {{$own->name}} </span> @endif @endforeach @endif </td>
-                            <td>{{$book->address}}</td>
-                            <td>{{$book->previous_address}}</td>
+                            {{-- <td>{{$book->address}}</td>
+                            <td>{{$book->previous_address}}</td> --}}
                             <td>{{$book->agreement}}</td>
-                            <td>{{$book->occupation}}</td>
+                            {{-- <td>{{$book->occupation}}</td> --}}
                             
                             {{-- <td>{{str_limit($book->description,300)}}</td>
                             <td>{{str_limit($book->facility,300)}}</td> --}}
                             
-                            <td>{{$book->price}}</td>
+                            {{-- <td>{{$book->price}}</td> --}}
                             <td>@if($book->approve==1) <span class="badge badge-success">Approved</span> @else <a href="{{route('admin.booking.approve',$book->id)}}"><span class="btn btn-info">Approve</span></a>@endif</td>
                             
                             {{-- <td> 

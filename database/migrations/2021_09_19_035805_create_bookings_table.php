@@ -18,15 +18,15 @@ class CreateBookingsTable extends Migration
             $table->date('issued_date')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
-            $table->string('salary')->nullable();
+            // $table->string('salary')->nullable();
             $table->string('contact')->nullable();
 
-            $table->string('address')->nullable();
-            $table->string('previous_address')->nullable();
+            // $table->string('address')->nullable();
+            // $table->string('previous_address')->nullable();
             $table->string('appointment_date')->nullable();
 
             $table->string('agreement')->nullable();
-            $table->string('occupation')->nullable();
+            // $table->string('occupation')->nullable();
             $table->boolean('approve')->default('0')->nullable();
             $table->boolean('status')->default('0')->nullable();
             $table->integer('user_id')->nullable();

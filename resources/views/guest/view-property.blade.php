@@ -80,7 +80,7 @@
                       @method('POST')
                       <div class="row">
 
-                                        @if (Route::has('login'))
+                                      @if (Route::has('login'))
                                       @auth
                                       <div class="text-center p-2"><p>Hi {{Auth::user()->name}}</p></div>
                                       @else
@@ -100,14 +100,14 @@
                                                     </div>
                                                   </div>
                                                 </div>
-                                                <div class="col-md-12">
+                                                {{-- <div class="col-md-12">
                                                   <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker mb-2 position-relative" inline="true">
                                                     <input type="text" name="occupation" placeholder="Occupation"  width="276" />
                                                     <div class="icon">
                                                       <img class="calendar" src="{{asset('frontend\assets\image\occupation.png')}}" alt="">
                                                     </div>
                                                   </div>
-                                                </div>
+                                                </div> --}}
                                                 </div>
                                                 <div class="col-md-12">
                                                   <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker mb-2 position-relative" inline="true">
@@ -118,34 +118,34 @@
                                                   </div>
                                                 </div>
                                                 
-                                                <div class="col-md-12">
+                                                {{-- <div class="col-md-12">
                                                   <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker mb-2 position-relative" inline="true">
                                                     <input type="text" name="address" placeholder="Address"  width="276" />
                                                     <div class="icon">
                                                       <img class="calendar" src="{{asset('frontend\assets\image\address.png')}}" alt="">
                                                     </div>
                                                   </div>
-                                                </div>
+                                                </div> --}}
                                           
                                       
                                       @endauth
                               @endif
                              
-                              <div class="col-md-12">
+                              {{-- <div class="col-md-12">
                                 <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker mb-2 position-relative" inline="true">
                                   <input type="text" name="previous_address" placeholder="Previous Address"  width="276" />
                                   <div class="icon">
                                     <img class="calendar" src="{{asset('frontend\assets\image\address.png')}}" alt="">
                                   </div>
                                 </div>
-                              </div>
+                              </div> --}}
                               <div class="col-md-12">
-                                <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker mb-2 position-relative" inline="true">
+                                {{-- <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker mb-2 position-relative" inline="true">
                                   <input type="text" name="salary" placeholder="Salary"  width="276" />
                                   <div class="icon">
                                     <img class="calendar" src="{{asset('frontend\assets\image\salary.png')}}" alt="">
                                   </div>
-                                </div>
+                                </div> --}}
 
 
 
@@ -153,11 +153,11 @@
                             <div class="col-md-12">
                               <div class="form-group mb-2 position-relative">
                                 <select class="form-control" name="appointment_date">
-                                  <option>Choose Appointment Time</option>
+                                  {{-- <option>Choose Appointment Time</option> --}}
                                   @isset($pro->appointmentDate)
                                   @foreach($pro->appointmentDate as $date) 
-                                  
-                                  <option value="{{$date->id}}">{{$date->appointment_date}}</option>
+                
+                                  <option value="{{$date->appointment_date}}">{{$date->appointment_date}}</option>
                                   @endforeach 
                                   @endisset
                                 </select>
@@ -171,7 +171,7 @@
                         </div>
 
   
-                      <div id="emailHelp" class="form-text">Your details are confidential.</div>
+                      {{-- <div id="emailHelp" class="form-text">Your details are confidential.</div> --}}
                       <button type="submit" class="btn btn-primary">BOOK NOW</button>
                     </form>
                     </div>

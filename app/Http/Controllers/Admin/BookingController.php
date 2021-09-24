@@ -24,8 +24,8 @@ class BookingController extends Controller
         {
 
                 $book = new Booking;
-                $book->previous_address = $request->previous_address;
-                $book->salary = $request->salary;
+                // $book->previous_address = $request->previous_address;
+                // $book->salary = $request->salary;
                 $book->appointment_date = $request->appointment_date;
                 $book->property_id = $proId;
                 $book->owner_id = Property::find($proId)->owner_id;
@@ -33,18 +33,18 @@ class BookingController extends Controller
             {
                 $user= User::find(Auth::user()->id);
                 $book->user_id = Auth::user()->id;
-                $book->address = $user->address;
+                // $book->address = $user->address;
                 $book->contact =$user->contact;
                 $book->name =$user->name;
-                $book->occupation =$user->occupation;
+                // $book->occupation =$user->occupation;
                 $book->email =$user->email;
 
             }
             else{
-                $book->address = $request->address;
+                // $book->address = $request->address;
                 $book->contact =$request->contact;
                 $book->name =$request->name;
-                $book->occupation =$request->occupation;
+                // $book->occupation =$request->occupation;
                 $book->email =$request->email;
 
             }
