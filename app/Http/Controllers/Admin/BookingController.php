@@ -50,7 +50,7 @@ class BookingController extends Controller
 
             }
             
-            // $book->save();
+            $book->save();
             $admin = User::where('role','office-staff')->first();
             $info='You have recieved a new booking request from ';
              {{Helper::notification($admin,$info,$userName);}}
