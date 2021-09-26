@@ -34,16 +34,16 @@ $("#datatable").DataTable({
         "scrollX": true
 });
 });
-function confirmation(e)
-      {
-        if(confirm('Are you sure to delete this record? Once delete cannot be recovered!'))
-        {
-          return document.getElementById('myform').submit();
-        }
-        else{
-          e.preventDefault();
-        }
-      }
+// function confirmation(e)
+//       {
+//         if(confirm('Are you sure to delete this record? Once delete cannot be recovered!'))
+//         {
+//           return document.getElementById('myform').submit();
+//         }
+//         else{
+//           e.preventDefault();
+//         }
+//       }
 
       
     </script>
@@ -201,11 +201,11 @@ function confirmation(e)
                             <td>@if($book->status==1) <span class="badge badge-success">Sent</span> @else <a href="{{route('admin.booking.status',$book->id)}}"><span class="btn btn-info">Send</span></a>@endif</td>
                             
                             <td> 
-                                <form id="myform" action="{{route('admin.booking.destroy', $book->id) }}" method="post">
+                                <form action="{{route('admin.booking.destroy', $book->id) }}" method="post">
                                     @method('delete')
                                     @csrf
                                     {{-- <a href="{{route('admin.property.edit',$book->id)}}"><span class="fa fa-edit"></span></a> &nbsp;&nbsp; --}}
-                                    <a href="#" onclick="confirmation(event)"><span class="fa fa-trash"></span> </a>
+                                    <button class="fa fa-trash" onclick="return confirm('Are you sure to delete this record? Once delete cannot be recovered!')"></button>
 
                                     
                                 </form>

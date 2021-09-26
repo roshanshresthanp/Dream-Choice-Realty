@@ -22,6 +22,8 @@ class allNotification extends Notification
         $this->detail = $detail;
     }
 
+    
+
     /**
      * Get the notification's delivery channels.
      *

@@ -9,7 +9,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Notification;
+use App\Mail\BookingMail;
+use Illuminate\Support\Facades\Mail;
 
 
 
@@ -80,8 +81,16 @@ class UserController extends Controller
             }
             $data['password'] = Hash::make($request->password);
             
-        if(Gate::allows('isAdmin') && User::create($data))
-        return redirect('/admin/user')->with('success','User added successfully');
+        if(Gate::allows('isAdmin'))
+        {
+            // dd($data['email']);
+            User::create($data);
+            $data['password'] = $request->password;
+
+            isset($data['email'])?Mail::to($data['email'])->send(new BookingMail($data)):'';
+            return redirect('/admin/user')->with('success','User added successfully');
+
+        }
         else
         return redirect('admin/user')->with('error','Sorry user added failed');
 

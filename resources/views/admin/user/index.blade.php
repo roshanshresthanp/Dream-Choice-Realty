@@ -27,17 +27,17 @@ $("#datatable").DataTable({
 });
 });
 
-function confirmation(e)
-      {
-        if(confirm('Are you sure to delete this record? Once delete cannot be recovered!'))
-        {
-          return document.getElementById('myform').submit();
-        }
-        else{
-          e.preventDefault();
-        }
-      }
-    </script>
+// function confirmation(e)
+//       {
+//         if(confirm('Are you sure to delete this record? Once delete cannot be recovered!'))
+//         {
+//           return document.getElementById('userDelete').submit();
+//         }
+//         else{
+//           e.preventDefault();
+//         }
+//       }
+//     </script>
     
 
 
@@ -102,13 +102,13 @@ function confirmation(e)
                             <td>{{$user->contact}}</td>
                             <td>{{$user->email}}</td>
                             <td> 
-                                <form id="myform" action="{{route('admin.user.destroy', $user->id) }}" method="post">
+                                <form id="userDelete" action="{{route('admin.user.destroy', $user->id) }}" method="post">
                                     @method('delete')
                                     @csrf
                                     <a href="{{route('admin.user.edit',$user->id)}}"><span class="fa fa-edit"></span></a> &nbsp;&nbsp;
 
                                     {{-- <input type="submit" class="fa fa-trash" value="jh" title="Delete" onclick="confirmation(event)"><i class="fa fa-trash"></i> --}}
-                                    <a href="#" onclick="confirmation(event)"><span class="fa fa-trash"></span> </a>
+                                    <button class="fa fa-trash" type="submit" title="Delete" onclick="return confirm('Are you sure to delete this record? Once delete cannot be recovered!')"></button>
 
                                     
                                 </form>

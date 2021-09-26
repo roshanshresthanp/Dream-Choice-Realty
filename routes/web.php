@@ -90,6 +90,14 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'middleware'=>['auth']], functi
 Route::redirect('/home', '/');
 Route::post('/booking/create/{id}',[BookingController::class,'store'])->name('booking.store');
 
+//Emails view display
+Route::get('/booking-confirm',function(){
+    return view('emails.booking');
+});
+Route::get('/user-add',function(){
+    return view('emails.booking');
+});
+
 
 
 
