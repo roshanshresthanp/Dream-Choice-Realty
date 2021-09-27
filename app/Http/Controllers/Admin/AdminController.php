@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Property;
 use App\Models\User;
 use App\Models\Booking;
-
+use App\Models\ReportIssue;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -57,8 +57,11 @@ class AdminController extends Controller
     }
     
 
-    public function bookingStatus($id)
+    public function reportedIssues()
     {
-
+        // $user = User::find(Auth::user()->id);
+        $property = Property::all();
+        $issue = ReportIssue::all();
+        return view('admin.report-issue.all-index',compact('property','issue'));
     }
 }

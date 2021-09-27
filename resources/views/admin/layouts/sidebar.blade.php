@@ -56,6 +56,13 @@
                     <span class="menu-text">Active Booking</span>
                 </a>
             </li>
+            <li class="menu-item {{ request()->is('admin/reported-issues')? 'menu-item-active' : '' }}" aria-haspopup="true">
+                <a href="{{route('admin.admin.issue')}}" class="menu-link">
+                    <span class="svg-icon menu-icon fa fa-bug">
+                    </span>
+                    <span class="menu-text">Reported Issues</span>
+                </a>
+            </li>
             @elsecan('isOwner')
 
             <li class="menu-item {{ request()->is('admin/property/*') || request()->is('admin/property') ? 'menu-item-active' : '' }}" aria-haspopup="true">
@@ -80,12 +87,26 @@
                     <span class="menu-text">Active Booking</span>
                 </a>
             </li>
+            <li class="menu-item {{ request()->is('admin/reported-issue')? 'menu-item-active' : '' }}" aria-haspopup="true">
+                <a href="{{route('admin.owner.issue')}}" class="menu-link">
+                    <span class="svg-icon menu-icon fa fa-bug">
+                    </span>
+                    <span class="menu-text">Reported Issues</span>
+                </a>
+            </li>
             @else
             <li class="menu-item {{ request()->is('admin/my-booking')? 'menu-item-active' : '' }}" aria-haspopup="true">
                 <a href="{{route('admin.booking.user.active')}}" class="menu-link">
                     <span class="svg-icon menu-icon fa fa-envelope">
                     </span>
                     <span class="menu-text">My Booking</span>
+                </a>
+            </li>
+            <li class="menu-item {{ request()->is('admin/report-issue')? 'menu-item-active' : '' }}" aria-haspopup="true">
+                <a href="{{route('admin.report-issue.index')}}" class="menu-link">
+                    <span class="svg-icon menu-icon fa fa-bug">
+                    </span>
+                    <span class="menu-text">Report Issue</span>
                 </a>
             </li>
             @endcan

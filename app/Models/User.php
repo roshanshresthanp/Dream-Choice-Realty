@@ -54,4 +54,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Booking::class,'owner_id');
     }
+
+    public function userReportIssue()
+    {
+        return $this->hasMany(ReportIssue::class,'user_id');
+    }
+    public function ownerReportIssue()
+    {
+        return $this->hasMany(ReportIssue::class,'owner_id');
+    }
 }

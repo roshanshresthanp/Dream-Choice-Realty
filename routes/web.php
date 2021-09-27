@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ReportIssueController;
 use App\Http\Controllers\Admin\AppointmentDateController;
 
 
@@ -67,6 +68,16 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'middleware'=>['auth']], functi
     Route::delete('/booking/{id}',[BookingController::class,'destroy'])->name('booking.destroy');
     Route::get('/booking/status/{id}',[BookingController::class,'status'])->name('booking.status');
     Route::get('/booking/approve/{id}',[BookingController::class,'approve'])->name('booking.approve');
+
+    Route::resource('/report-issue', ReportIssueController::class);
+    Route::get('/reported-issues',[AdminController::class,'reportedIssues'])->name('admin.issue');
+    Route::get('/reported-issue',[ReportIssueController::class,'reportedIssue'])->name('owner.issue');
+    Route::get('/report-issue/status/{id}',[ReportIssueController::class,'status'])->name('issue.status');
+    Route::get('/report-issue/approve/{id}',[ReportIssueController::class,'approve'])->name('issue.approve');
+    Route::get('/report-issue/complete/{id}',[ReportIssueController::class,'complete'])->name('issue.complete');
+
+
+
 
 
 
