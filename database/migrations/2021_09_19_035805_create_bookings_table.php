@@ -16,6 +16,8 @@ class CreateBookingsTable extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->date('issued_date')->nullable();
+            $table->date('expiry_date')->nullable();
+
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             // $table->string('salary')->nullable();

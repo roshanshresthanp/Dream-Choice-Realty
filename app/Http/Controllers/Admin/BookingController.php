@@ -11,6 +11,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Helper;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
+use App\Mail\BookingMail;
+
+
 
 class BookingController extends Controller
 {
@@ -138,6 +144,31 @@ class BookingController extends Controller
         $book = Booking::find($id);
         if($book->approve == 0)
         $book->approve=1;
+        $book->issued_date = date('Y-m-d');
+        $book->expiry_date = date('Y-m-d', strtotime("+365 days"));
+
+        $check = Booking::find($id)->user_id;
+        if($check==null)
+        {
+            $pass = rand();
+            $user = new User;
+            $user->name = $book->name;
+            $user->email = $book->email;
+            $user->contact = $book->contact;
+            $user->password = Hash::make($pass);
+            $user->role = 'rental-client';
+            $user->save();
+            Session::flash('message', 'User registered successfully'); 
+            $data =[
+                'email'=>$book->email,
+                'password'=>$pass
+            ];
+            // dd($data['email'],$data['password']);
+            isset($data['email'])?Mail::to($data['email'])->send(new BookingMail($data)):'';
+            
+            $book->user_id = $user->id;
+        }
+       
         $book->save();
 
         $pro = Property::find($book->property_id);
@@ -145,7 +176,6 @@ class BookingController extends Controller
 
         if(isset($book->user_id))
         {
-            $pro = Property::find($book->property_id);
             {{Helper::notification($client,'Your booking request is approved for ',$pro->name);}}
 
         }
@@ -154,9 +184,6 @@ class BookingController extends Controller
         $info='Property owner has assigned ' .$pro->name.'  to ';
         {{Helper::notification($admin,$info,$book->name);}}
         
-
-        
-
         return redirect()->back()->with('success','Booking request has approved');
     }
 }

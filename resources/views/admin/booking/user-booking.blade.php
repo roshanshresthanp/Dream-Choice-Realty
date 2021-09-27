@@ -204,7 +204,7 @@ function confirmation(e)
 
                         {{-- <th>Area</th>
                         <th>Location</th> --}}
-                        <th>Report Issue</th>
+                        {{-- <th>Report Issue</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -230,8 +230,8 @@ function confirmation(e)
                             
                             {{-- <td>{{$book->price}}</td> --}}
                             <td>@if($book->approve==1) <span class="badge badge-success">Approved</span> @else <span class="badge badge-danger">Disapproved</span>@endif</td>
-                            <td>@if($book->approve==1) <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
-                                Report</button>@else N/A  @endif </td>
+                            {{-- <td>@if($book->approve==1) <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
+                                Report</button>@else N/A  @endif </td> --}}
                             {{-- <td> 
                                 <form id="myform" action="{{route('admin.booking.destroy', $book->id) }}" method="post">
                                     @method('delete')
