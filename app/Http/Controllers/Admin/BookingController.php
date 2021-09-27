@@ -123,19 +123,14 @@ class BookingController extends Controller
         $book->save();
 
         // $booking
+        
         $pro = Property::find($book->property_id);
         $owner = User::find($book->owner_id);
+        if(isset($pro) && isset($owner)){
         $name = $pro->name;
-        //     $detail =[
-        //     'date'=>date("F j, Y, g:i a"),
-        //     'name'=> $pro->name,
-        //     'info'=>'You have recieved a new tenant request for '
-        // ];
-        // Notification::send($owner, new allNotification($detail));
         {{Helper::notification($owner,'You have recieved a new tenant request for ',$name);}}
 
-        
-
+        }
         return redirect()->back()->with('success','Booking request has sent to Property Owner');
     }
     public function approve($id)
@@ -143,7 +138,7 @@ class BookingController extends Controller
         $book = Booking::find($id);
         if($book->approve == 0)
         $book->approve=1;
-        // $book->save();
+        $book->save();
 
         $pro = Property::find($book->property_id);
         $client = User::find($book->user_id);
@@ -154,9 +149,11 @@ class BookingController extends Controller
             {{Helper::notification($client,'Your booking request is approved for ',$pro->name);}}
 
         }
+
         $admin = User::where('role','office-staff')->first();
         $info='Property owner has assigned ' .$pro->name.'  to ';
-        {{Helper::notification($admin,$info,$client->name);}}
+        {{Helper::notification($admin,$info,$book->name);}}
+        
 
         
 
