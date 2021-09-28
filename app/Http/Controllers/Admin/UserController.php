@@ -9,7 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
-use App\Mail\BookingMail;
+use App\Mail\UserRegistration;
 use Illuminate\Support\Facades\Mail;
 
 
@@ -87,7 +87,7 @@ class UserController extends Controller
             User::create($data);
             $data['password'] = $request->password;
 
-            isset($data['email'])?Mail::to($data['email'])->send(new BookingMail($data)):'';
+            isset($data['email'])?Mail::to($data['email'])->send(new UserRegistration($data)):'';
             return redirect('/admin/user')->with('success','User added successfully');
 
         }

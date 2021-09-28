@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class BookingMail extends Mailable
+class UserRegistration extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,10 +16,10 @@ class BookingMail extends Mailable
      *
      * @return void
      */
-    public $booking;
-    public function __construct($booking)
+    public $data;
+    public function __construct($data)
     {
-        $this->booking = $booking;
+        $this->data = $data;
 
     }
 
@@ -30,6 +30,6 @@ class BookingMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Booking Confirmation Mail')->view('mails.booking-confirmation');
+        return $this->subject('User Registration Mail')->view('mails.user-registration');
     }
 }

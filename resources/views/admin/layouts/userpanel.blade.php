@@ -79,7 +79,7 @@
             </a>
             <!--end:Item-->
             <!--begin::Item-->
-            <a href="custom/apps/user/profile-3.html" class="navi-item">
+            <a @can('isAdmin') href="{{route('admin.message.index')}}" @elsecan('isOwner') href="{{route('admin.message.owner')}}" @else href="{{route('admin.message.user')}}" @endcan  class="navi-item">
                 <div class="navi-link">
                     <div class="symbol symbol-40 bg-light mr-3">
                         <div class="symbol-label">

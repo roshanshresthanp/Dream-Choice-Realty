@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use App\Mail\BookingMail;
+use App\Mail\UserRegistration;
 
 
 
@@ -22,12 +23,9 @@ class BookingController extends Controller
 {
     public function store(Request $request,$proId){
 
-        // dd(Property::find($proId)->owner_id);
-
         // dd($request->all());
         if(Gate::denies('isAdmin') && (Gate::denies('isOwner')))
         {
-
                 $book = new Booking;
                 // $book->previous_address = $request->previous_address;
                 // $book->salary = $request->salary;
@@ -80,12 +78,15 @@ class BookingController extends Controller
 
     public function activeBooking()
     {
+        if(Gate::allows('isOwner')){
         $owner = User::find(Auth::user()->id);
         // dd($owner->ownerBooking()); 
         $booking = Booking::where('status','1')->latest()->get();
         $user = User::all();
         $property = Property::all();
         return view('admin.booking.owner-booking',compact('booking','user','property','owner'));
+        }else
+        return view('admin.error.error'); 
     }
     public function tenantList()
     {
@@ -127,9 +128,7 @@ class BookingController extends Controller
         if($book->status == 0)
         $book->status =1;
         $book->save();
-
         // $booking
-        
         $pro = Property::find($book->property_id);
         $owner = User::find($book->owner_id);
         if(isset($pro) && isset($owner)){
@@ -139,6 +138,7 @@ class BookingController extends Controller
         }
         return redirect()->back()->with('success','Booking request has sent to Property Owner');
     }
+
     public function approve($id)
     {
         $book = Booking::find($id);
@@ -164,21 +164,23 @@ class BookingController extends Controller
                 'password'=>$pass
             ];
             // dd($data['email'],$data['password']);
-            isset($data['email'])?Mail::to($data['email'])->send(new BookingMail($data)):'';
+            isset($data['email'])?Mail::to($data['email'])->send(new UserRegistration($data)):'';
             
             $book->user_id = $user->id;
         }
        
         $book->save();
-
         $pro = Property::find($book->property_id);
         $client = User::find($book->user_id);
 
-        if(isset($book->user_id))
-        {
-            {{Helper::notification($client,'Your booking request is approved for ',$pro->name);}}
+        $booking = [
+            'email'=>$book->email,
+            'property'=>$pro->name,
+            'price'=>$pro->rent
+        ];
+        isset($booking['email'])?Mail::to($booking['email'])->send(new BookingMail($booking)):'';
 
-        }
+        {{Helper::notification($client,'Your booking request is approved for ',$pro->name);}}
 
         $admin = User::where('role','office-staff')->first();
         $info='Property owner has assigned ' .$pro->name.'  to ';
