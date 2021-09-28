@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Gate;
 
 use App\Models\Contact;
 
@@ -29,7 +29,16 @@ class ContactController extends Controller
     {
         //
     }
- 
+    public function contacts()
+    {
+        if(Gate::allows('isAdmin'))
+        {
+        $contact = Contact::latest()->get();
+        return view('admin.contact.index',compact('contact'));
+        }else
+        return view('admin.error.error');
+
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -92,6 +101,7 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Contact::find($id)->delete();
+        return redirect()->back()->with('success','Contact deleted successfully');
     }
 }

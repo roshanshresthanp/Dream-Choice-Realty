@@ -67,7 +67,14 @@
                 <a href="{{route('admin.message.index')}}" class="menu-link">
                     <span class="svg-icon menu-icon fa fa-inbox">
                     </span>
-                    <span class="menu-text">Message</span>
+                    <span class="menu-text">Messages</span>
+                </a>
+            </li>
+            <li class="menu-item {{ request()->is('admin/contacts')? 'menu-item-active' : '' }}" aria-haspopup="true">
+                <a href="{{route('admin.contact')}}" class="menu-link">
+                    <span class="svg-icon menu-icon fa fa-phone">
+                    </span>
+                    <span class="menu-text">Contacts</span>
                 </a>
             </li>
             @elsecan('isOwner')

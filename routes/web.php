@@ -82,6 +82,7 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'middleware'=>['auth']], functi
     Route::get('/messages', [MessageController::class,'ownerMessage'])->name('message.owner');
     Route::get('/my-message', [MessageController::class,'userMessage'])->name('message.user');
 
+    Route::get('/contacts',[ContactController::class,'contacts'])->name('contact');
 
 
 
@@ -129,15 +130,5 @@ Route::get('/user-add',function(){
 Route::get('/property',[IndexController::class,'property'])->name('property');
 Route::get('/view-property/{id}',[IndexController::class,'propertyDetail'])->name('property.view');
 Route::post('/search-property',[IndexController::class,'search'])->name('search.view');
-// Route::get('/contact',[IndexController::class,'contactUs'])->name('contact');
 Route::resource('/contact', ContactController::class);
-// Route::get('contact', 'ContactController@contactUS');
-// Route::post('contact', ['as'=>'contactus.store','uses'=>'ContactController@contactPost']);
-// Route::resource('/appointment-date', AppointmentDateController::class);
-// Route::resource('/contact', ContactController::class);
-// Route::post('/test',function(Request $request)
-//     {
-//         dd($request->all());
-//         // return view('admin.error.error');
-//     })->name('search.view');
 
