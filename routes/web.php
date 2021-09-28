@@ -4,15 +4,16 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\ReportIssueController;
 use App\Http\Controllers\Admin\AppointmentDateController;
+use App\Http\Controllers\Admin\BookingController;
 
 
 
 
 
 use App\Http\Controllers\Frontend\IndexController;
-use App\Http\Controllers\Admin\BookingController;
 use Illuminate\Http\Request;
 
 
@@ -75,6 +76,11 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'middleware'=>['auth']], functi
     Route::get('/report-issue/status/{id}',[ReportIssueController::class,'status'])->name('issue.status');
     Route::get('/report-issue/approve/{id}',[ReportIssueController::class,'approve'])->name('issue.approve');
     Route::get('/report-issue/complete/{id}',[ReportIssueController::class,'complete'])->name('issue.complete');
+
+
+    Route::resource('/message', MessageController::class);
+    Route::get('/messages', [MessageController::class,'ownerMessage'])->name('message.owner');
+    Route::get('/my-message', [MessageController::class,'userMessage'])->name('message.user');
 
 
 

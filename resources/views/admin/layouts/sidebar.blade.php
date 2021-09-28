@@ -63,6 +63,13 @@
                     <span class="menu-text">Reported Issues</span>
                 </a>
             </li>
+            <li class="menu-item {{ request()->is('admin/message')? 'menu-item-active' : '' }}" aria-haspopup="true">
+                <a href="{{route('admin.message.index')}}" class="menu-link">
+                    <span class="svg-icon menu-icon fa fa-inbox">
+                    </span>
+                    <span class="menu-text">Message</span>
+                </a>
+            </li>
             @elsecan('isOwner')
 
             <li class="menu-item {{ request()->is('admin/property/*') || request()->is('admin/property') ? 'menu-item-active' : '' }}" aria-haspopup="true">
@@ -94,6 +101,13 @@
                     <span class="menu-text">Reported Issues</span>
                 </a>
             </li>
+            <li class="menu-item {{ request()->is('admin/messages')? 'menu-item-active' : '' }}" aria-haspopup="true">
+                <a href="{{route('admin.message.owner')}}" class="menu-link">
+                    <span class="svg-icon menu-icon fa fa-inbox">
+                    </span>
+                    <span class="menu-text">Message</span>
+                </a>
+            </li>
             @else
             <li class="menu-item {{ request()->is('admin/my-booking')? 'menu-item-active' : '' }}" aria-haspopup="true">
                 <a href="{{route('admin.booking.user.active')}}" class="menu-link">
@@ -107,6 +121,13 @@
                     <span class="svg-icon menu-icon fa fa-bug">
                     </span>
                     <span class="menu-text">Report Issue</span>
+                </a>
+            </li>
+            <li class="menu-item {{ request()->is('admin/my-message')? 'menu-item-active' : '' }}" aria-haspopup="true">
+                <a href="{{route('admin.message.user')}}" class="menu-link">
+                    <span class="svg-icon menu-icon fa fa-inbox">
+                    </span>
+                    <span class="menu-text">Message</span>
                 </a>
             </li>
             @endcan
