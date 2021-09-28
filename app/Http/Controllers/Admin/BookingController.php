@@ -151,7 +151,7 @@ class BookingController extends Controller
         }
 
         $admin = User::where('role','office-staff')->first();
-        $info='Property owner has assigned ' .$pro->name.'  to ';
+        $info='Property owner has assigned ' .$pro->name. ' to ';
         {{Helper::notification($admin,$info,$book->name);}}
         
 

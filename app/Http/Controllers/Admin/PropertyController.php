@@ -61,7 +61,7 @@ class PropertyController extends Controller
         $this->validate($request, [
             'name' => 'required|string|max:255',
             'area' => 'required|string|max:255',
-            'description' => 'nullable|string|max:1500',
+            'description' => 'nullable|string|max:2000',
             'facility' => 'nullable|string|max:1500',
             'rent'=>'required|numeric|gt:0',
             'location'=>'required|string|max:255',

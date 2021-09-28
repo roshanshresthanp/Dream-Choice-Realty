@@ -26,8 +26,8 @@
             @csrf
             @method('POST')
           <div class="row">
-              <div class="col-lg-4 col-sm-6  flex-it">
-                <div class="col-md-12">
+              {{-- <div class="col-lg-4 col-sm-6  flex-it"> --}}
+                <div class="col">
                   <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker mb-2 position-relative" inline="true">
                     <input placeholder="Rent Up To" name="rent" type="text" width="200" />
                     <div class="icon">
@@ -35,7 +35,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-12">
+                <div class="col">
                   <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker mb-2 position-relative" inline="true">
                     <input placeholder="Location" name="location" width="200" />
                     <div class="icon">
@@ -43,7 +43,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              {{-- </div> --}}
               <div class="col-lg-4 col-sm-6  flex-it">
               <div class="col-md-12">
                   <button type="submit " class="button button_red mb-2 edit-btn">Search</button>
@@ -118,45 +118,36 @@
   </div>
 </section>
 
-<section class="info-banner bg-transparent">
+<section class="info-banner">
   <div class="container">
     <div class="row">
-      <div class="col-md-6 d-flex align-items-center">
-        <div class="room-info-banner">
-          <h1 class="head-four text-light f-w-3 ">Exclusive to affordable, explore with us.</h1>
-          <h1 class="head-two text-blue_light pb-3 ">Exclusive to affordable, explore with us.</h1>
-          <p class="para-two text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis architecto beatae soluta? Recusandae debitis quos saepe id autem ipsum molestias dignissimos sunt eveniet fugiat dolore, eos facilis, cumque repellendus cum.</p>
-          <div class="main-services">
-            <div class="box">
-              <img src="frontend\assets\image\food light.svg" alt="">
-              <div class="box-info">
-                <p class="para-one text-light">Keep track of all of your property details with us.</p>
-                <p class="para-two text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit.  </p>
-              </div>
+      <div class="col-lg-6">
+        <h1 class="head-four text-light f-w-3 ">Continue your journey with us.</h1>
+        <h1 class="head-two text-blue_light pb-3 ">Book a Property Now and connect with us.</h1>
+        
+        <div class="main-services">
+          <div class="box">
+            <img src="frontend/assets\image\comfort light.svg" alt="">
+            <div class="box-info">
+              <p class="para-one text-light">Explore our Listed Properties.</p>
+              <p class="para-two text-white">Visit property.</p>
             </div>
-            <div class="box">
-              <img src="frontend\assets\image\comfort light.svg" alt="">
-              <div class="box-info">
-                <p class="para-one text-light">Become a property-owner or rental client with us.</p>
-                <p class="para-two text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis minima architecto fugiat hic quibusdam incidunt  </p>
-              </div>
-            </div>
-            <div class="box">
-              <img src="frontend\assets\image\explore light.svg" alt="">
-              <div class="box-info">
-                <p class="para-one text-light">Explore Real Estate Properties.</p>
-                <p class="para-two text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-              </div>
+          </div>
+          <div class="box">
+            <img src="frontend/assets\image\explore light.svg" alt="">
+            <div class="box-info">
+              <p class="para-one text-light">Explore </p>
+              <p class="para-two text-white">Check every details of Your Properties. </p>
             </div>
           </div>
         </div>
-        
       </div>
-      <div class="col-md-6">
-        <img class="main-image"  src="frontend\assets\image\rooms.png" alt="">
+      <div class="col-lg-6">
+          <img class="main-image" src="frontend\assets\image\istockphoto-1221462158-170667a.jpg" alt="">
       </div>
     </div>
   </div>
 </section>
+</br></br>
 @endsection
 
