@@ -32,22 +32,22 @@
               @endif
 
               {{-- <div class="item ">
-                <img src="frontend\assets\image\hotel 2.jpg">
+                <img src="{{asset('frontend\assets\image\hotel 2.jpg')}}>
               </div>
               <div class="item">
-                <div><img src="frontend\assets\image\hotel 1.jpg"></div>
+                <div><img src="{{asset('frontend\assets\image\hotel 1.jpg')}}""></div>
               </div>
               <div class="item">
-                <div><img src="frontend\assets\image\hotel 2.jpg"></div>
+                <div><img src="{{asset('frontend\assets\image\hotel 2.jpg')}}""></div>
               </div>
               <div class="item">
-                <div><img src="frontend\assets\image\hotel 3.jpg"></div>
+                <div><img src="{{asset('frontend\assets\image\hotel 3.jpg')}}""></div>
               </div>
               <div class="item">
-                <div><img src="frontend\assets\image\hotel 4.jpg"></div>
+                <div><img src="{{asset('frontend\assets\image\hotel 4.jpg')}}""></div>
               </div>
               <div class="item">
-                <div><img src="frontend\assets\image\delux.jpg"></div>
+                <div><img src="{{asset('frontend\assets\image\delux.jpg')}}""></div>
               </div>--}}
             </div> 
 
@@ -109,8 +109,8 @@
                                                   </div>
                                                 </div> --}}
                                                 </div>
-                                                <div class="col-md-12">
-                                                  <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker mb-2 position-relative" inline="true">
+                                                <div class="col-md-12 flex-it">
+                                                  <div id="date-picker-example" class="form-group mb-2 position-relative" inline="true">
                                                     <input type="text" name="contact" placeholder="Contact"  width="276" />
                                                     <div class="icon">
                                                       <img class="calendar" src="{{asset('frontend\assets\image\contact.png')}}" alt="">
@@ -184,6 +184,7 @@
           
           <div class=" col-lg-8">
             <div>
+           
               <div class="room-details-box">
                 <h1 class="head-three head_dark">Name</h1>
               </div>
@@ -194,8 +195,9 @@
               </div>
               <p class="para-one pt-3">{!! $pro->description!!}</p> 
             </div>
-            
+           
               <div class="room-details-box">
+                
                 <h1 class="head-three head_dark">Property Details</h1>
               </div>
               <div class="details-table">
@@ -283,22 +285,89 @@
                     </div>
                   </div>
                 </div>
+                <div id="delux1" class="rooms-toggle room-active">
+       
+       
+         
+     
+        
+      </div>
                 <div class="room-details-box">
                 <h1 class="head-three head_dark">Other Facilities</h1>
               </div>
               <p class="para-one pt-3">{!! $pro->facility!!}</p> 
             </div>
+
+           <!-- Next property to be shown  -->
+
+           
               </div>
+              
             </div>
           </div>
-
-        
-          
-         
-         
-          
         <!-- </div> -->
       <!-- </div> -->
+    </div>
+    
+  </div>
+</section>
+<section class="rooms pt-0">
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-md-12">
+        <div class="rooms-titles ">
+          <button  class="collaps-btn-edit head-four head_blue f-w-4 active collaps-btn" target="delux1" >
+            <span>Delux</span> 
+          </button>
+          <button class=" collaps-btn-edit head-four head_blue f-w-4 collaps-btn" target="delux2">
+            <span>Standard</span> 
+          </button>
+          <button class=" collaps-btn-edit head-four head_blue f-w-4 collaps-btn " target="delux3">
+            <span>Studio</span>
+           </button>
+        </div>
+      </div> -->
+      <div id="delux1" class="rooms-toggle room-active">
+        <div class="row">
+          @foreach($property as $pro)
+          <div  class="col-md-4">
+            <a href="{{route('property.view',$pro->id)}}">
+              <div class="rooms-box">
+                <div class="image">
+                  <img src="{{asset('storage/images/property/'.$pro->featured_photo)}}" alt="aaa">
+                </div>
+                <div class="rooms-info text-center">
+                  <span class="price">From <span class="value">AUD </span><span>{{$pro->rent}}</span></span>
+                  <h1 class="head-four head_red pb-3 f-w-5"> {{$pro->name}}</h1>
+                  <p class="para-two para_gray " style="color:red;">{!!str_limit($pro->facility,20)!!}</p>
+                  <div class="rooms-scale">
+                    <div class="scale">
+                      <img class="" src="frontend\assets\image\bathroom.jpg" alt="">
+                      
+                      <span class="para-two">{{$pro->bathroom}}</span>
+                    </div>
+                    <div class="scale">
+                      <img class="" src="frontend\assets\image\room.png" alt="">
+                      <!-- <img class="show-on-nothover" src="frontend\assets\image\bed red.svg" alt=""> -->
+                      <!-- <img class="show-on-hover" src="frontend\assets\image\bed light.svg" alt=""> -->
+                      <span  class="para-two">{{$pro->bedroom}}</span>
+                    </div>
+                    <div class="scale">
+                      <img class="" src="frontend\assets\image\garage.png" alt="">
+                      <!-- <img class="show-on-nothover" src="frontend\assets\image\scale red.svg" alt=""> -->
+                      <!-- <img class="show-on-hover" src="frontend\assets\image\scale light.svg" alt=""> -->
+                      <span class="para-two">2</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            
+          </div>
+         @endforeach
+        </div>
+      </div>
+     
     </div>
   </div>
 </section>

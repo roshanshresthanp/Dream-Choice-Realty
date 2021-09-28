@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Property;
 use App\Models\User;
+use App\Models\Contact;
 
 class IndexController extends Controller
 {
@@ -20,9 +21,13 @@ class IndexController extends Controller
     public function propertyDetail($id)
     {
         $pro = Property::find($id);
-        // $user = User::all();
-        // dd($pro);
-        return view('guest.view-property',compact('pro'));
+        $property = Property::latest()->take(3)->get();
+        // dd($property);
+        return view('guest.view-property',compact('pro','property'));
+    }
+    public function contactUs()
+    {
+        return view('guest.contact');
     }
     public function search(Request $request)
     {
@@ -37,14 +42,14 @@ class IndexController extends Controller
 
         $result = Property::where('location','like',$location)->orwhere('rent','<',$rent)->get();
 
-        dd($result);
+      
 
 
         // $user = User::all();
-        // dd($pro);
+        // dd($result);
 
 
 
-        // return view('guest.search-property',compact('pro1'));
+         return view('guest.search-property',compact('result'));
     }
 }

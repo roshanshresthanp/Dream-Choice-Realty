@@ -183,7 +183,7 @@ class BookingController extends Controller
         {{Helper::notification($client,'Your booking request is approved for ',$pro->name);}}
 
         $admin = User::where('role','office-staff')->first();
-        $info='Property owner has assigned ' .$pro->name.'  to ';
+        $info='Property owner has assigned ' .$pro->name. ' to ';
         {{Helper::notification($admin,$info,$book->name);}}
         
         return redirect()->back()->with('success','Booking request has approved');
