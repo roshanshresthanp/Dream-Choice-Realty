@@ -3098,4 +3098,12 @@
 	<!--end::Dashboard-->
 </div>
 @endcan
+@can('isOwner')
+<p>This is property owner dashboard</p>
+@endcan
+
+@can('isClient')
+<p>This is Client dashboard</p>
+@endcan
+
 @endsection

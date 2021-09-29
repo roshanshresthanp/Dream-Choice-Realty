@@ -40,7 +40,7 @@ class IndexController extends Controller
 
         // $notices = News::where('categories','like','%Notice%')->where('deleted',null)->orderBy('published_en','desc')->get();
 
-        $result = Property::where('location','like',$location)->orwhere('rent','<',$rent)->get();
+        $result = Property::where('location','like',$location)->where('rent','<',$rent)->get();
 
       
 

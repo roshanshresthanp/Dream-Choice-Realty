@@ -25,9 +25,9 @@
           <form action="{{route('search.view')}}" method="post">
             @csrf
             @method('POST')
-          <div class="row">
-              <div class="col-lg-4 col-sm-6  flex-it">
-                <div class="col-md-12">
+            <div class="row">
+              {{-- <div class="col-lg-4 col-sm-6  flex-it"> --}}
+                <div class="col">
                   <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker mb-2 position-relative" inline="true">
                     <input placeholder="Rent Up To" name="rent" type="text" width="200" />
                     <div class="icon">
@@ -35,7 +35,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-12">
+                <div class="col">
                   <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker mb-2 position-relative" inline="true">
                     <input placeholder="Location" name="location" width="200" />
                     <div class="icon">
@@ -43,7 +43,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              {{-- </div> --}}
               <div class="col-lg-4 col-sm-6  flex-it">
               <div class="col-md-12">
                   <button type="submit " class="button button_red mb-2 edit-btn">Search</button>
