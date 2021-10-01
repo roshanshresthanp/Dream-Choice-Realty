@@ -65,6 +65,11 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'middleware'=>['auth']], functi
     Route::get('/my-booking',[BookingController::class,'activeUserBooking'])->name('booking.user.active');
 
 
+    Route::get('/booking/{id}',[BookingController::class,'notifyUser'])->name('booking.notify');
+    Route::get('/booking/user/{id}',[BookingController::class,'userDetail'])->name('booking.user-detail');
+    Route::get('/booking/edit/{id}',[BookingController::class,'edit'])->name('booking.edit');
+    Route::put('/booking/edit/{id}',[BookingController::class,'update'])->name('booking.update');
+
 
     Route::delete('/booking/{id}',[BookingController::class,'destroy'])->name('booking.destroy');
     Route::get('/booking/status/{id}',[BookingController::class,'status'])->name('booking.status');

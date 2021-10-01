@@ -128,9 +128,9 @@ $("#datatable1").DataTable({
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$report->created_at}}</td>
-                                    <td>{{$report->sender_id}}</td>
+                                    <td>@if(isset($user)) @foreach($user as $sender) @if($sender->id ==$report->sender_id) {{$sender->name}} ({{ucwords(str_replace('-',' ', $sender->role))}})  @endif @endforeach @endif </td>
                                     <td>{{$report->subject}}</td>
-                                    <td>{{str_limit($report->description,400)}}</td>
+                                    <td>{{$report->description}}</td>
                                     
                                     {{-- <td>@if($book->approve==1) <span class="badge badge-success">Approved</span> @else <span class="badge badge-danger">Disapproved</span>@endif</td>
                                     <td>@if($book->approve==1) <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
@@ -199,9 +199,9 @@ $("#datatable1").DataTable({
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$report->created_at}}</td>
-                                    <td>{{$report->receiver_id}}</td>
+                                    <td>@if(isset($user)) @foreach($user as $receiver) @if($receiver->id ==$report->receiver_id) {{$receiver->name}} ({{ucwords(str_replace('-',' ', $receiver->role))}})  @endif @endforeach @endif </td>
                                     <td>{{$report->subject}}</td>
-                                    <td>{{str_limit($report->description,400)}}</td>
+                                    <td>{{$report->description}}</td>
                                     
                                     {{-- <td>@if($book->approve==1) <span class="badge badge-success">Approved</span> @else <span class="badge badge-danger">Disapproved</span>@endif</td>
                                     <td>@if($book->approve==1) <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">

@@ -41,7 +41,9 @@ class MessageController extends Controller
     {
         if(Gate::allows('isClient')){
             $msg = User::find(Auth::user()->id);
-            return view('admin.message.user-index',compact('msg'));
+            $user = User::where('role','office-staff')->first();
+
+            return view('admin.message.user-index',compact('msg','user'));
         }else
         return view('admin.error.error');
 

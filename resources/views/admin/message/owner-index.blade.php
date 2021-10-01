@@ -130,7 +130,7 @@ $("#datatable1").DataTable({
                                     <td>{{$report->created_at}}</td>
                                     {{-- <td>{{$report->sender_id}}</td> --}}
                                     <td>{{$report->subject}}</td>
-                                    <td>{{str_limit($report->description,400)}}</td>
+                                    <td>{{$report->description}}</td>
                                     
                                     {{-- <td>@if($book->approve==1) <span class="badge badge-success">Approved</span> @else <span class="badge badge-danger">Disapproved</span>@endif</td>
                                     <td>@if($book->approve==1) <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
@@ -195,7 +195,7 @@ $("#datatable1").DataTable({
                                     <td>{{$report->created_at}}</td>
                                     {{-- <td>{{$report->sender_id}}</td> --}}
                                     <td>{{$report->subject}}</td>
-                                    <td>{{str_limit($report->description,400)}}</td>
+                                    <td>{{$report->description}}</td>
                                     
                                     {{-- <td>@if($book->approve==1) <span class="badge badge-success">Approved</span> @else <span class="badge badge-danger">Disapproved</span>@endif</td>
                                     <td>@if($book->approve==1) <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
