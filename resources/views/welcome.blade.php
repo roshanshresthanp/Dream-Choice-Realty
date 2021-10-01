@@ -1,7 +1,7 @@
 @extends('guest.layouts.master')
 
 @section('content')
-<section class="banner pb-0">
+<section class="banner p-0">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12 p-0">
@@ -72,7 +72,67 @@
   </div>
 </section>
 <br>
-<br>
+<br> 
+<section class="rooms pt-0 pb-5">
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-md-12">
+        <div class="rooms-titles ">
+          <button  class="collaps-btn-edit head-four head_blue f-w-4 active collaps-btn" target="delux1" >
+            <span>Delux</span> 
+          </button>
+          <button class=" collaps-btn-edit head-four head_blue f-w-4 collaps-btn" target="delux2">
+            <span>Standard</span> 
+          </button>
+          <button class=" collaps-btn-edit head-four head_blue f-w-4 collaps-btn " target="delux3">
+            <span>Studio</span>
+           </button>
+        </div>
+      </div> -->
+      <div id="delux1" class="rooms-toggle room-active">
+        <div class="row">
+          @foreach($properties as $pro)
+          <div  class="col-md-4">
+            <a href="{{route('property.view',$pro->id)}}">
+              <div class="rooms-box">
+                <div class="image">
+                  <img src="{{asset('storage/images/property/'.$pro->featured_photo)}}" alt="aaa">
+                </div>
+                <div class="rooms-info text-center">
+                  <span class="price">From <span class="value">AUD </span><span>{{$pro->rent}}</span></span>
+                  <h1 class="head-four head_red pb-3 f-w-5"> {{$pro->name}}</h1>
+                  <p class="para-two para_gray " style="color:red;">{!!str_limit($pro->facility,20)!!}</p>
+                  <div class="rooms-scale">
+                    <div class="scale">
+                      <img class="" src="frontend\assets\image\bathroom.jpg" alt="">
+                      
+                      <span class="para-two">{{$pro->bathroom}}</span>
+                    </div>
+                    <div class="scale">
+                      <img class="" src="frontend\assets\image\room.png" alt="">
+                      <!-- <img class="show-on-nothover" src="frontend\assets\image\bed red.svg" alt=""> -->
+                      <!-- <img class="show-on-hover" src="frontend\assets\image\bed light.svg" alt=""> -->
+                      <span  class="para-two">{{$pro->bedroom}}</span>
+                    </div>
+                    <div class="scale">
+                      <img class="" src="frontend\assets\image\garage.png" alt="">
+                      <!-- <img class="show-on-nothover" src="frontend\assets\image\scale red.svg" alt=""> -->
+                      <!-- <img class="show-on-hover" src="frontend\assets\image\scale light.svg" alt=""> -->
+                      <span class="para-two">2</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            
+          </div>
+         @endforeach
+        </div>
+      </div>
+     
+    </div>
+  </div>
+</section> 
 
 
 

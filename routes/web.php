@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
+use App\Models\Property;
 
 
 /*
@@ -35,7 +36,9 @@ use App\Models\User;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $properties=Property::take(3)->get();
+    return view('welcome',compact('properties'));
+
 });
 
 Auth::routes();
