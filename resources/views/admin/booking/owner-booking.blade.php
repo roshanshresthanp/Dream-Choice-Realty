@@ -165,7 +165,7 @@ function confirmation(e)
                     <tr>
                         <th>S.N</th>
                         <th>Date</th>
-                        <th>Appointment Date</th>
+                        {{-- <th>Appointment Date</th> --}}
                         <th>Name</th>
                         {{-- <th>Salary</th> --}}
                         <th>Email</th>
@@ -173,7 +173,7 @@ function confirmation(e)
                         <th>Property</th>
                         {{-- <th>Address</th>
                         <th>Previous Address</th> --}}
-                        <th>Agreement</th>
+                        {{-- <th>Agreement</th> --}}
                         {{-- <th>Occupation</th>
                         <th>Price</th> --}}
                         {{-- <th>Status</th> --}}
@@ -191,7 +191,7 @@ function confirmation(e)
                         <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>{{$book->created_at}}</td>
-                            <td>{{$book->appointment_date}}</td>
+                            {{-- <td>{{$book->appointment_date}}</td> --}}
                             <td>{{$book->name}}</td>
                             {{-- <td>{{$book->salary}}</td> --}}
                             <td>{{$book->email}} </td>
@@ -199,7 +199,7 @@ function confirmation(e)
                             <td>@if(isset($property)) @foreach($property as $own) @if($own->id == $book->property_id) {{$own->name}} </span> @endif @endforeach @endif </td>
                             {{-- <td>{{$book->address}}</td>
                             <td>{{$book->previous_address}}</td> --}}
-                            <td>{{$book->agreement}}</td>
+                            {{-- <td>{{$book->agreement}}</td> --}}
                             {{-- <td>{{$book->occupation}}</td> --}}
                             
                             {{-- <td>{{$book->price}}</td> --}}

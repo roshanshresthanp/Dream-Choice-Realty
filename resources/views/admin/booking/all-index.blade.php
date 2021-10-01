@@ -30,7 +30,7 @@ $(function () {
 
 $("#datatable").DataTable({
 //   "responsive": true
-//   "scrollY": 200,
+  "scrollY": 200,
         "scrollX": true
 });
 });
@@ -170,7 +170,9 @@ $("#datatable").DataTable({
                         <th>Email</th>
                         <th>Contact</th>
                         <th>Property</th>
-                        <th>Agreement</th>
+                        <th>Appointment mail</th>
+                        <th>Tenant detail mail</th>
+
                         {{-- <th>Price</th> --}}
                         <th>Request to owner</th>
                         <th>Actions</th>
@@ -191,20 +193,22 @@ $("#datatable").DataTable({
                             <td>@if(isset($property)) @foreach($property as $own) @if($own->id == $book->property_id) {{$own->name}} </span> @endif @endforeach @endif </td>
                             {{-- <td>{{$book->address}}</td>
                             <td>{{$book->previous_address}}</td> --}}
-                            <td>{{$book->agreement}}</td>
+                            <td>@if($book->notify==1) <span class="badge badge-success">Mail sent</span> @else <a href="{{route('admin.booking.notify',$book->id)}}"><span class="btn btn-sm btn-primary">Mail</span></a>@endif</td>
+                            <td>@if($book->detail==1) <span class="badge badge-success">Mail sent</span> @elseif($book->notify==1) <a href="{{route('admin.booking.user-detail',$book->id)}}"><span class="btn btn-sm btn-primary">Mail</span></a>@else N/A @endif</td>
+
                             {{-- <td>{{$book->occupation}}</td> --}}
                             
                             {{-- <td>{{str_limit($book->description,300)}}</td>
                             <td>{{str_limit($book->facility,300)}}</td> --}}
                             
                             {{-- <td>{{$book->price}}</td> --}}
-                            <td>@if($book->status==1) <span class="badge badge-success">Sent</span> @else <a href="{{route('admin.booking.status',$book->id)}}"><span class="btn btn-info">Send</span></a>@endif</td>
+                            <td>@if($book->status==1) <span class="badge badge-success">Request sent</span> @elseif(isset($book->document) && $book->detail==1) <a href="{{route('admin.booking.status',$book->id)}}"><span class="btn btn-sm btn-info">Send</span></a>@else N/A @endif</td>
                             
                             <td> 
                                 <form action="{{route('admin.booking.destroy', $book->id) }}" method="post">
                                     @method('delete')
                                     @csrf
-                                    {{-- <a href="{{route('admin.property.edit',$book->id)}}"><span class="fa fa-edit"></span></a> &nbsp;&nbsp; --}}
+                                    <a href="{{route('admin.booking.edit',$book->id)}}" title="Edit Document"><span class="fa fa-edit"></span></a> &nbsp;&nbsp;
                                     <button class="fa fa-trash" onclick="return confirm('Are you sure to delete this record? Once delete cannot be recovered!')"></button>
 
                                     

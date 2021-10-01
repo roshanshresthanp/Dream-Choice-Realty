@@ -27,6 +27,7 @@ class CreatePropertiesTable extends Migration
             $table->string('area')->nullable();
             $table->string('location')->nullable();
             $table->mediumText('facility')->nullable();
+            $table->boolean('status')->default('1')->nullable();
             $table->timestamps();
         });
     }
