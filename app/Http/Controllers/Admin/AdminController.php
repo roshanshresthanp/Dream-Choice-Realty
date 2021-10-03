@@ -42,6 +42,40 @@ class AdminController extends Controller
         return view('admin.error.error');
 
     }
+    public function tenantListView($id)
+    {
+        // dd($id);
+        $book = Booking::find($id);
+        $property = Property::all();
+        // foreach(json_decode($book->document) as $img)
+        // {
+        //     // dd($img);
+        //     var_dump($img);
+        // }
+
+        return view('admin.booking.view-tenant-list',compact('book','property'));
+        
+    }
+    public function reportIssueView($id){
+        $report = ReportIssue::find($id);
+        // dd($id);
+        $property = Property::all();
+        return view('admin.report-issue.view-issue-report',compact('report','property'));
+    }
+    public function bookingRequestView($id)
+    {
+        // dd($id);
+        $book = Booking::find($id);
+        // foreach(json_decode($book->document) as $img)
+        // {
+        //     // dd($img);
+        //     var_dump($img);
+        // }
+        $property = Property::all();
+
+        return view('admin.booking.view-booking-request',compact('book','property'));
+        
+    }
 
     public function activeBooking()
     {

@@ -32,9 +32,9 @@
 					<span class="button__text">Log In Now</span>
 					<i class="button__icon fas fa-chevron-right"></i>
 				</button>				
-			</form>
-			
-		</div>
+			</form><div style="margin: 35px;">
+			<a href="/"><u style="color:black"><--Back to Home</u></a>
+		</div></div>
 		<div class="screen__background">
 			<span class="screen__background__shape screen__background__shape4"></span>
 			<span class="screen__background__shape screen__background__shape3"></span>		

@@ -59,6 +59,10 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'middleware'=>['auth']], functi
 
 
     Route::get('/bookings',[AdminController::class,'booking'])->name('all.booking');
+    Route::get('/booking-view/{id}',[AdminController::class,'bookingRequestView'])->name('booking-request.view');
+    Route::get('/tenant-view/{id}',[AdminController::class,'tenantListView'])->name('tenant-request.view');
+    Route::get('/issue-view/{id}',[AdminController::class,'reportIssueView'])->name('report-issue.view');
+
     Route::get('/active-bookings',[AdminController::class,'activeBooking'])->name('all.booking.active');
 
 

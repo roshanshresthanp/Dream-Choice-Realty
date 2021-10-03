@@ -180,7 +180,7 @@ function confirmation(e)
 
                         {{-- <th>Area</th>
                         <th>Location</th> --}}
-                        {{-- <th>Actions</th> --}}
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -210,15 +210,15 @@ function confirmation(e)
                             {{-- <td>{{$book->price}}</td> --}}
                             <td>@if($book->approve==1) <span class="badge badge-success">Approved</span> @else <a href="{{route('admin.booking.approve',$book->id)}}"><span class="btn btn-info">Approve</span></a>@endif</td>
                             
-                            {{-- <td> 
+                            <td> 
                                 <form id="myform" action="{{route('admin.booking.destroy', $book->id) }}" method="post">
                                     @method('delete')
                                     @csrf
-                                    <a href="#" onclick="confirmation(event)"><span class="fa fa-trash"></span> </a>
-
+                                    
+                                    <a href="{{route('admin.tenant-request.view',$book->id)}}" title="View Document"><span class="fa fa-eye"></span></a> &nbsp;&nbsp;
                                     
                                 </form>
-                            </td> --}}
+                            </td>
                         </tr>
                         @endif
                         @endforeach

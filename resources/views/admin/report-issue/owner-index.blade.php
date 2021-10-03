@@ -158,7 +158,7 @@ $("#datatable").DataTable({
                         
                         {{-- <th>Area</th>
                         <th>Location</th> --}}
-                        {{-- <th>Actions</th> --}}
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -182,15 +182,10 @@ $("#datatable").DataTable({
                         <td>@if($report->approve==1) <span class="badge badge-success">Approved</span> @else <a href="{{route('admin.issue.approve',$report->id)}}"><span class="btn btn-info">Approve</span></a>@endif</td>
                       {{--  <td>@if($book->approve==1) <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
                             Report</button>@else N/A  @endif </td> --}}
-                        {{-- <td> 
-                            <form id="myform" action="{{route('admin.booking.destroy', $book->id) }}" method="post">
-                                @method('delete')
-                                @csrf
-                                <a href="#" onclick="confirmation(event)"><span class="fa fa-trash"></span> </a>
+                        <td> 
+                            <a href="{{route('admin.report-issue.view',$report->id)}}"><span class="fa fa-eye"></span> </a>
 
-                                
-                            </form>
-                        </td> --}}
+                        </td>
                     </tr>
                     @endif
                     @endforeach

@@ -169,35 +169,7 @@
   </div>
 </section>
 
-<section class="reviews">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1 class="head-one head_dark pb-5 text-center title">Testimonials</h1>
-      </div>
-      <div class="col-md-12">
-        <div class="reviews-list owl-carousel owl-theme" id="reviews">
-          <div class="reviews-box text-center">
-            <div class="reviews-data">
-              <img src="frontend/assets\image\person.jpg" alt="">
-              <p class="head-four head_blue p-3">Hem Sagar Poudel</p>
-              <p class="para-two head_gray p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus aliquam sit ex architecto ipsam. Earum, exercitationem voluptas, repellendus esse officiis obcaecati dolorem dolor nam dicta labore recusandae est nesciunt veniam!</p>
-            </div>
-          </div>
-          
-          <div class="reviews-box text-center">
-            <div class="reviews-data">
-              <img src="frontend/assets\image\person.jpg" alt="">
-              <p class="head-four head_blue p-3">Hem Sagar Poudel</p>
-              <p class="para-two head_gray p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus aliquam sit ex architecto ipsam. Earum, exercitationem voluptas, repellendus esse officiis obcaecati dolorem dolor nam dicta labore recusandae est nesciunt veniam!</p>
-            </div>
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+
 @endsection
 
 
