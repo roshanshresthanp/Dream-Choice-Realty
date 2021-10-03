@@ -30,6 +30,6 @@ class BookingMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Booking Confirmation Mail')->view('mails.booking-confirmation');
+        return $this->subject('Tenancy Confirmation Mail')->view('mails.booking-confirmation');
     }
 }

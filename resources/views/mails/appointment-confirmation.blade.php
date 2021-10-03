@@ -4,12 +4,10 @@
     <title>Appointment Confirmation</title>
 </head>
 <body>
-    <h1>Welcome to Dream-Choice-Realty<h1>
-    <h4>
-        hello :{{isset($data['name'])?$data['name']:''}}  </h4>
-    {{-- <h6>Please proceed to login at <a href="www.google.com">Dream-Choice-Realty</a> </h6> --}}
-    Property name : {{isset($data['property'])? $data['property']:''}} Rent : {{isset($data['rent'])? $data['rent']:''}} 
-    <h5> visit us at '''date' </h5>
-    <p>Thank you</p>
+    <h1>Appointment Confirmation Mail</h1>
+    <p>  Dear {{isset($data['name'])?$data['name']:''}}, you have requested an inspection on {{isset($data['property'])? $data['property']:''}}.
+            We are glad to say that your request has been accepted. You can visit the property on {{isset($data['appointment_date'])?$data['appointment_date']:''}} for inspection.
+    <p>Thank you</p><br>
+    <p>Regards, Dream Choice Realty Team</p>
 </body>
 </html>

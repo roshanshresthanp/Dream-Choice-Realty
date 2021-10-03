@@ -30,6 +30,6 @@ class UserDetail extends Mailable
      */
     public function build()
     {
-        return $this->subject('User Detail Form')->view('mails.user-detail');
+        return $this->subject('Tenancy Form')->view('mails.user-detail');
     }
 }
