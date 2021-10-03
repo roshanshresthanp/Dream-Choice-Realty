@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\ReportIssueController;
 use App\Http\Controllers\Admin\AppointmentDateController;
 use App\Http\Controllers\Admin\BookingController;
+use App\Http\Controllers\Admin\ChargedAmountController;
+use App\Http\Controllers\Admin\PaymentController;
 
 
 
@@ -54,6 +56,13 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'middleware'=>['auth']], functi
     Route::resource('/user', UserController::class);
     Route::resource('/property', PropertyController::class);
     Route::resource('/appointment-date', AppointmentDateController::class);
+    Route::resource('/charge', ChargedAmountController::class);
+
+    Route::resource('/payment', PaymentController::class);
+
+    // Route::post('/charge/{id}',[ChargedAmountController::class,'store'])->name('charge.store');
+
+
 
     Route::get('/properties',[AdminController::class,'property'])->name('all.property');
 
@@ -83,7 +92,7 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'middleware'=>['auth']], functi
     Route::get('/reported-issue',[ReportIssueController::class,'reportedIssue'])->name('owner.issue');
     Route::get('/report-issue/status/{id}',[ReportIssueController::class,'status'])->name('issue.status');
     Route::get('/report-issue/approve/{id}',[ReportIssueController::class,'approve'])->name('issue.approve');
-    Route::get('/report-issue/complete/{id}',[ReportIssueController::class,'complete'])->name('issue.complete');
+    // Route::get('/report-issue/complete/{id}',[ReportIssueController::class,'complete'])->name('issue.complete');
 
 
     Route::resource('/message', MessageController::class);

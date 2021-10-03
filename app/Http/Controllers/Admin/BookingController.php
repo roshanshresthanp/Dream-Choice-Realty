@@ -275,7 +275,6 @@ class BookingController extends Controller
             ];
             // dd($data['email'],$data['password']);
             isset($data['email'])?Mail::to($data['email'])->send(new UserRegistration($data)):'';
-            
             $book->user_id = $user->id;
         }
        

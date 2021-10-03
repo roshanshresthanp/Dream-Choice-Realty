@@ -30,7 +30,7 @@ $(function () {
 
 $("#datatable").DataTable({
 //   "responsive": true
-//   "scrollY": 200,
+  "scrollY": 200,
         "scrollX": true
 });
 });
@@ -197,10 +197,12 @@ function confirmation(e)
                         <th>Property</th>
                         <th>Location</th>
                         {{-- <th>Area</th> --}}
-                        <th>Agreement</th>
+                        {{-- <th>Agreement</th> --}}
                         {{-- <th>Occupation</th>
                         <th>Price</th> --}}
                         <th>Status</th>
+                        <th>Pay</th>
+
 
                         {{-- <th>Area</th>
                         <th>Location</th> --}}
@@ -209,7 +211,7 @@ function confirmation(e)
                 </thead>
                 <tbody>
                     
-                    @if(isset($owner) )
+                    @if(isset($owner))
                         @foreach ($owner->userBooking as $book)
                         {{-- @if($book->status==1 && $book->approve==1) --}}
                         <tr>
@@ -222,7 +224,7 @@ function confirmation(e)
                             <td>@if(isset($property)) @foreach($property as $own) @if($own->id == $book->property_id) {{$own->name}} @endif @endforeach @endif </td>
                             <td>@if(isset($property)) @foreach($property as $own) @if($own->id == $book->property_id) {{$own->location}} @endif @endforeach @endif </td>
                             {{-- <td>@if(isset($property)) @foreach($property as $own) @if($own->id == $book->property_id) {{$own->area}} </span> @endif @endforeach @endif </td> --}}
-                            <td>{{$book->agreement}}</td>
+                            {{-- <td>{{$book->agreement}}</td> --}}
                             {{-- <td>{{$book->occupation}}</td> --}}
                             
                             {{-- <td>{{str_limit($book->description,300)}}</td>
@@ -230,8 +232,8 @@ function confirmation(e)
                             
                             {{-- <td>{{$book->price}}</td> --}}
                             <td>@if($book->approve==1) <span class="badge badge-success">Approved</span> @else <span class="badge badge-danger">Disapproved</span>@endif</td>
-                            {{-- <td>@if($book->approve==1) <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
-                                Report</button>@else N/A  @endif </td> --}}
+                            <td>@if($book->approve==1) <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#example{{$book->id}}Center">
+                                Pay now</button>@else N/A  @endif </td>
                             {{-- <td> 
                                 <form id="myform" action="{{route('admin.booking.destroy', $book->id) }}" method="post">
                                     @method('delete')
@@ -255,17 +257,18 @@ function confirmation(e)
     </div>
     <!--end::Card-->
 </div>
-
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+@if(isset($owner) )
+@foreach ($owner->userBooking as $book)
+<div class="modal fade" id="example{{$book->id}}Center" tabindex="-1" role="dialog" aria-labelledby="example{{$book->id}}CenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Report issue</h5>
+          <h5 class="modal-title" id="example{{$book->id}}LongTitle">Report issue {{$book->id}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="{{route('admin.report-issue.store')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('admin.payment.store')}}" method="post" enctype="multipart/form-data">
         <div class="modal-body">
                 @csrf
                 @method('POST')
@@ -314,6 +317,8 @@ function confirmation(e)
       </div>
     </div>
   </div>
+  @endforeach
+  @endif
 @endsection
 
 

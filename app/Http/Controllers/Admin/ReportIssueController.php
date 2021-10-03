@@ -127,24 +127,24 @@ class ReportIssueController extends Controller
         // }
         return redirect()->back()->with('success','Reported issue has approved sucessfully');
     }
-    public function complete($id)
-    {
-        $report = ReportIssue::find($id);
-        if($report->complete == 0)
-        $report->complete = 1;
-        $report->save();
+    // public function complete($id)
+    // {
+    //     $report = ReportIssue::find($id);
+    //     if($report->complete == 0)
+    //     $report->complete = 1;
+    //     $report->save();
 
-        // $booking
+    //     // $booking
         
-        // $pro = Property::find($book->property_id);
-        // $owner = User::find($book->owner_id);
-        // if(isset($pro) && isset($owner)){
-        // $name = $pro->name;
-        // {{Helper::notification($owner,'You have recieved a new tenant request for ',$name);}}
+    //     // $pro = Property::find($book->property_id);
+    //     // $owner = User::find($book->owner_id);
+    //     // if(isset($pro) && isset($owner)){
+    //     // $name = $pro->name;
+    //     // {{Helper::notification($owner,'You have recieved a new tenant request for ',$name);}}
 
-        // }
-        return redirect()->back()->with('success','Reported issue is maintenanced sucessfully');
-    }
+    //     // }
+    //     return redirect()->back()->with('success','Reported issue is maintenanced sucessfully');
+    // }
     
 
     /**

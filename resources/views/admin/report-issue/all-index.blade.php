@@ -83,13 +83,6 @@ function confirmation(e)
                 <h5 class="card-label">Table showing all reported issues
                 {{-- <span class="d-block text-muted pt-2 font-size-sm">Scrollable Horizontal &amp; Vertical DataTable</span></h5> --}}
             </div>
-            {{-- <div class="card-toolbar">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                    <span class="svg-icon svg-icon-md fa fa-plus">
-                    </span> Report Issue
-                  </button>
-                <!--end::Button-->
-            </div> --}}
         </div>
         <div class="card-body">
             <!--begin: Datatable-->
@@ -131,11 +124,10 @@ function confirmation(e)
                                 @elseif($report->status==1) <span class="badge badge-warning">Pending</span> 
                                 @else N/A @endif</td>
                                 <td>@if($report->complete==1) <span class="badge badge-success">Completed</span>
-                                     @elseif($report->approve==1) <a href="{{route('admin.issue.complete',$report->id)}}"><span class="btn btn-info">Complete</span></a>
+                                     @elseif($report->approve==1) <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#example{{$report->property_id}}ModalCenter">Add expenses</button>
+                                        {{-- <a href="{{route('admin.issue.complete',$report->id)}}"><span class="btn btn-info">Complete</span></a> --}}
                                      @else N/A @endif</td>
 
-                          {{--  <td>@if($book->approve==1) <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
-                                Report</button>@else N/A  @endif </td> --}}
                             {{-- <td> 
                                 <form id="myform" action="{{route('admin.booking.destroy', $book->id) }}" method="post">
                                     @method('delete')
@@ -159,6 +151,48 @@ function confirmation(e)
     </div>
     <!--end::Card-->
 </div>
+@if(isset($issue))
+    @foreach ($issue as $item)
+    @php $id=$item->property_id; @endphp
+<div class="modal fade" id="example{{$id}}ModalCenter" tabindex="-1" role="dialog" aria-labelledby="example{{$id}}ModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="example{{$id}}ModalLongTitle"> Expenses Amount</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{{route('admin.charge.store')}}" method="post" enctype="multipart/form-data">
+        <div class="modal-body">
+                @csrf
+                @method('POST')
+                <div class="form-group">
+                    <label>Expense (Amount)
+                    <span class="text-danger">*</span>
+                </label>
+                    <input type="text" class="form-control @error('charge') is-invalid @enderror" name="charge" value="{{old('charge')}}" required />
+                   
+                </div>
+                <input type="hidden" class="form-control @error('property_id') is-invalid @enderror" name="property_id" value="{{$item->property_id}}"  />
+                <input type="hidden" class="form-control @error('report_id') is-invalid @enderror" name="report_id" value="{{$item->id}}"  />
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        </form>
+      </div>
+    </div>
+</div>
+@endforeach
+@endif
+
+    <script>
+//    
+    </script>
 @endsection
 
 
