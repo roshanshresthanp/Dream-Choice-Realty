@@ -287,16 +287,16 @@ label.radio input:checked+span::before {
             </div>
           </div>
           <div class="container">
-        <h3><u>Report Issue details</u></h3>
+        <h3><u style="font-size: 23px">Report Issue details</u></h3>
         <br>
         <ul>
-          <li>
-          Subject: {{$report->subject}}
+            <li style="font-size: 20px">
+            Subject: {{$report->subject}}
           </li><br>
-          <li>
+          <li style="font-size: 20px">
             Description: {{$report->description}}
           </li><br> 
-        <li>
+        <li style="font-size: 20px">
          Property Name:@if(isset($property)) @foreach($property as $own) @if($own->id == $report->property_id) {{$own->name}} </span> @endif @endforeach @endif 
  
         </li>   
