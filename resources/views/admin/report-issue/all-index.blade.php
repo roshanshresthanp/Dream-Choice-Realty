@@ -97,6 +97,8 @@ function confirmation(e)
                         <th>Request to Owner</th>
                         <th>Status</th>
                         <th>Complete</th>
+                        <th>Action</th>
+
 
                     </tr>
                 </thead>
@@ -128,6 +130,7 @@ function confirmation(e)
                                         {{-- <a href="{{route('admin.issue.complete',$report->id)}}"><span class="btn btn-info">Complete</span></a> --}}
                                      @else N/A @endif</td>
 
+<<<<<<< HEAD
                             {{-- <td> 
                                 <form id="myform" action="{{route('admin.booking.destroy', $book->id) }}" method="post">
                                     @method('delete')
@@ -137,6 +140,13 @@ function confirmation(e)
                                     
                                 </form>
                             </td> --}}
+=======
+                          {{--  <td>@if($book->approve==1) <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
+                                Report</button>@else N/A  @endif </td> --}}
+                            <td> 
+                                <a href="{{route('admin.report-issue.view',$report->id)}}"><span class="fa fa-eye"></span> </a>
+                            </td>
+>>>>>>> f4c5d81a9ca2e817e04977550ba04851ad67dd77
                         </tr>
                         {{-- @endif --}}
                         @endforeach

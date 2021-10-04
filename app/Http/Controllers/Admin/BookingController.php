@@ -201,7 +201,8 @@ class BookingController extends Controller
             'email'=>$user->email,
             'name'=>$user->name,
             'property'=>$pro->name,
-            'rent'=>$pro->rent
+            'rent'=>$pro->rent,
+            'appointment_date'=>$user->appointment_date
         ];
         // dd($data['email'],$data['password']);
         isset($data['email'])?Mail::to($data['email'])->send(new AppointmentMail($data)):'';
@@ -222,7 +223,9 @@ class BookingController extends Controller
             'email'=>$user->email,
             'name'=>$user->name,
             'property'=>$pro->name,
-            'rent'=>$pro->rent
+            'rent'=>$pro->rent,
+            'appointment_date'=>$user->appointment_date
+
         ];
         // dd($data['email'],$data['password']);
         isset($data['email'])?Mail::to($data['email'])->send(new UserDetail($data)):'';

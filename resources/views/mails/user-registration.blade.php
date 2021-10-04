@@ -4,10 +4,19 @@
     <title>User Registration</title>
 </head>
 <body>
-    <h1>Welcome to Dream-Choice-Realty<h1>
-    <h4>You have successfully registered your account :{{isset($data['email'])?$data['email']:''}} and password : {{isset($data['password'])? $data['password']:''}} </h4>
-    <h6>Please proceed to login at <a href="www.google.com">Dream-Choice-Realty</a> </h6>
-   
-    <p>Thank you</p>
+    <h1>User registration Details<h1><br>
+    <h4>Welcome to Dream Choice Realty</h4><br>
+       <p> Your sign in detail is:<br>
+        Username: :{{isset($data['email'])?$data['email']:''}}<br>
+        Password:  {{isset($data['password'])? $data['password']:''}}<br>
+        
+        You can login to our website using these credentials.<br>
+        Our website: www.dreamchoicereal.com<br>
+        Thank you.<br>
+        Dream Choice Realty Team.<br>
+           
+        
+        
+       </p>
 </body>
 </html>
