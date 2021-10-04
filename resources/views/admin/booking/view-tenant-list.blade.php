@@ -290,29 +290,29 @@ label.radio input:checked+span::before {
         <h3><u>Booking details</u></h3>
         <br>
         <ul>
-          <li>
+          <li style="font-size: 20px">
           Appointment Date: {{$book->appointment_date}}
           </li>
-          <li>
+          <li style="font-size: 20px">
             Name: {{$book->name}}
           </li><br><br>
           <li>
             Contact: {{$book->contact}}
           </li> 
-          <li>
+          <li style="font-size: 20px">
             Property Name: @if(isset($property)) @foreach($property as $own) @if($own->id == $book->property_id) {{$own->name}} </span> @endif @endforeach @endif 
     
            </li>   
-           <li>
+           <li style="font-size: 20px">
              Job Description : {{$book->job_description}}
            </li><br><br>
            <li>
              Recent Address: {{$book->recent_address}}
            </li>  
-           <li>
+           <li style="font-size: 20px">
              Income: {{$book->income}}
            </li><br>
-           <li>
+           <li style="font-size: 20px">
              Expenses: {{$book->expenses}}
            </li>         
         </ul>
