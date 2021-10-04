@@ -77,6 +77,13 @@
                     <span class="menu-text">Enquiry</span>
                 </a>
             </li>
+            <li class="menu-item {{ request()->is('admin/payment')? 'menu-item-active' : '' }}" aria-haspopup="true">
+                <a href="{{route('admin.payment.index')}}" class="menu-link">
+                    <span class="svg-icon menu-icon fa fa-money-bill">
+                    </span>
+                    <span class="menu-text">Payments</span>
+                </a>
+            </li>
             @elsecan('isOwner')
 
             <li class="menu-item {{ request()->is('admin/property/*') || request()->is('admin/property') ? 'menu-item-active' : '' }}" aria-haspopup="true">
@@ -135,6 +142,13 @@
                     <span class="svg-icon menu-icon fa fa-inbox">
                     </span>
                     <span class="menu-text">Message</span>
+                </a>
+            </li>
+            <li class="menu-item {{ request()->is('admin/my-payment')? 'menu-item-active' : '' }}" aria-haspopup="true">
+                <a href="{{route('admin.payment.user')}}" class="menu-link">
+                    <span class="svg-icon menu-icon fa fa-money-bill">
+                    </span>
+                    <span class="menu-text">Payments</span>
                 </a>
             </li>
             @endcan

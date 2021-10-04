@@ -263,7 +263,7 @@ function confirmation(e)
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="example{{$book->id}}LongTitle">Report issue {{$book->id}}</h5>
+          <h5 class="modal-title " id="example{{$book->id}}LongTitle">Payment Detail {{$book->id}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -272,41 +272,55 @@ function confirmation(e)
         <div class="modal-body">
                 @csrf
                 @method('POST')
-                {{-- <div class="form-group">
-                    <label>Appointment Date
-                    <span class="text-danger">*</span>
-                </label>
-                    <input type="datetime-local" class="form-control @error('appointment_date') is-invalid @enderror" name="appointment_date" value="{{old('appointment_date')}}" required />
+                     <div class="form-group">
+                      <label>Full Name:</label>
+                      <input type="text" class="form-control @error('name') is-invalid @enderror" value="@foreach($user as $u) @if($u->id==$book->user_id) {{$u->name}} @endif @endforeach" placeholder="Enter full name" name="name" readonly />
+                      {{-- <span class="form-text text-muted">Please enter your full name</span> --}}
+                      @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                     </div>
                    
-                </div> --}}
-                <div class="form-group">
-                    <label>Subject
-                    {{-- <span class="text-danger">*</span> --}}
-                </label>
-                    <input type="text" class="form-control @error('subject') is-invalid @enderror" placeholder="Enter subject" name="subject" value="{{old('subject')}}" >
-                    {{-- @error('subject')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror --}}
-                </div>
-                <div class="form-group">
-                    <label>Issue Description
-                    {{-- <span class="text-danger">*</span> --}}
-                </label>
-                    <textarea rows="4" class="form-control @error('description') is-invalid @enderror" placeholder="Enter description" name="description" >{{old('description')}}</textarea>
-                    {{-- @error('description')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror --}}
-                </div>
-                <div class="form-group">
+                     {{-- <div class="separator separator-dashed my-5"></div> --}}
+                     <div class="form-group">
+                        <label>Amount</label>
+                        <div class="input-group">
+                         <div class="input-group-prepend"><span class="input-group-text" >AUD</span></div>
+                         <input type="text" class="form-control" value="@foreach($property as $pro) @if($pro->id==$book->property_id) {{$pro->rent}} @endif @endforeach" placeholder="Rent Amount Displayed Default values" name="amount" readonly/>
+                         {{-- <input type="text" class="form-control" value="@foreach($property as $pro) @if($pro->id==$book->property_id) @php $amt=0; @endphp @if(isset($charge)) @foreach($charge as $deduct)@if($deduct->property_id == $pro->id) @php $amt= $deduct->charge; @endphp @endif @endforeach  {{$pro->rent-$amt}} @endif @endif @endforeach" placeholder="Rent Amount Displayed Default values" name="amount"/> --}}
+                        </div>
+                     </div>
+                     <input type="hidden" class="form-control" value="{{$book->property_id}}" placeholder="Rent Amount Displayed Default values" name="property_id"/>
+
+                     <div class="separator separator-dashed my-5"></div>
+                     <div class="form-group">
+                        <label>Card Number</label>
+                        <input type="text" class="form-control" placeholder="Enter card number" name="card_number"/>
+                        <span class="form-text text-muted">We'll never share your card details with anyone else</span>
+                     </div>
+                   
+                     {{-- <div class="separator separator-dashed my-5"></div> --}}
+                   <div class="form-group row">
+                    <div class="col">
+                        <label>Expiry Date</label>
+                        <input type="date" class="form-control" name="expiry_date"/>
+                       </div>
+                    {{-- <div class="separator separator-dsashed my-5"></div> --}}
+                   
+                    <div class="col">
+                       <label>Security Code</label>
+                       <input type="password" class="form-control"  placeholder="Enter 3 digit security code"  name="security_code"/>
+                    </div>
+                   </div>
+                     
+                {{-- <div class="form-group">
                     <label for="image">{{__('Upload images')}}:</label>
                     <input type="file" id="imageCollection" name="photo[]" accept=".png, .jpg, .jpeg, .svg , .webp"  onchange="javascript:updateList()" class="" multiple="">
                     <div id="imageList" class="pt-3"></div>
                     
-                </div>
+                </div> --}}
                 
         </div>
         <div class="modal-footer">

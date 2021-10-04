@@ -72,5 +72,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Message::class,'receiver_id');
     }
-
+    // public function cardDetail()
+    // {
+    //     return $this->hasOne(CardDetail::class,'user_id');
+    // }
+    public function payment()
+    {
+        return $this->hasMany(Payment::class,'paid_by');
+    }
 }

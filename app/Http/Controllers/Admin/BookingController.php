@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Session;
 use App\Mail\BookingMail;
 use App\Mail\UserDetail;
 use App\Mail\UserRegistration;
+use App\Models\ChargedAmount;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -158,9 +159,10 @@ class BookingController extends Controller
         $owner = User::find(Auth::user()->id);
         // dd($owner->ownerBooking()); 
         $booking = Booking::where('status','1')->latest()->get();
-        $user = User::all();
+        $user = User::where('role','rental-client')->get();
+        $charge = ChargedAmount::all();
         $property = Property::all();
-        return view('admin.booking.user-booking',compact('booking','user','property','owner'));
+        return view('admin.booking.user-booking',compact('booking','user','property','owner','charge'));
     }
 
 

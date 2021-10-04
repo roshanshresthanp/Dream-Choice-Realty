@@ -59,6 +59,8 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'middleware'=>['auth']], functi
     Route::resource('/charge', ChargedAmountController::class);
 
     Route::resource('/payment', PaymentController::class);
+    Route::get('/my-payment',[PaymentController::class,'userIndex'])->name('payment.user');
+
 
     // Route::post('/charge/{id}',[ChargedAmountController::class,'store'])->name('charge.store');
 
