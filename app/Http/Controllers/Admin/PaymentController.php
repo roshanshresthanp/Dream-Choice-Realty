@@ -22,7 +22,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        if(Gate::allows('isClient'))
+        if(Gate::allows('isAdmin'))
         {
         $payment = Payment::all();
         $user = User::where('role','rental-client')->get();
