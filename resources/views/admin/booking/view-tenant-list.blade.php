@@ -287,7 +287,7 @@ label.radio input:checked+span::before {
             </div>
           </div>
           <div class="container">
-        <h3><u>Booking details</u></h3>
+        <h3><u style="font-size: 23px">Booking details</u></h3>
         <br>
         <ul>
           <li style="font-size: 20px">
@@ -295,8 +295,8 @@ label.radio input:checked+span::before {
           </li>
           <li style="font-size: 20px">
             Name: {{$book->name}}
-          </li><br><br>
-          <li>
+          </li ><br><br>
+          <li style="font-size: 20px">
             Contact: {{$book->contact}}
           </li> 
           <li style="font-size: 20px">
@@ -306,7 +306,7 @@ label.radio input:checked+span::before {
            <li style="font-size: 20px">
              Job Description : {{$book->job_description}}
            </li><br><br>
-           <li>
+           <li style="font-size: 20px">
              Recent Address: {{$book->recent_address}}
            </li>  
            <li style="font-size: 20px">

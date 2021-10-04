@@ -287,7 +287,7 @@ label.radio input:checked+span::before {
             </div>
           </div>
           <div class="container">
-        <h3><u>Booking details</u></h3>
+        <h3><u style="font-size: 23px">Booking details</u></h3>
         <br>
         <ul>
           <li style="font-size: 20px">
