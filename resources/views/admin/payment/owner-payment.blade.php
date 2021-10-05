@@ -8,7 +8,7 @@
 		<a href="{{route('admin.dashboard') }}" class="text-muted">Dashboard</a>
 	</li>
 	<li class="breadcrumb-item text-active">
-		<a href="{{ route('admin.payment.user')}}" class="text-active">Payments</a>
+		<a href="{{ route('admin.payment.owner')}}" class="text-active">Payments</a>
 	</li>
 </ul>
 @endsection
@@ -101,7 +101,9 @@ $("#datatable").DataTable({
                         <th>Payment Till</th>
                         {{-- <th>Salary</th> --}}
                         <th>Property Name</th>
-                        <th>Amount paid</th>
+                        {{-- <th>Rent</th> --}}
+                        <th>Charges</th>
+                        <th>Amount</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -117,6 +119,9 @@ $("#datatable").DataTable({
                             {{-- <td>@foreach($user as $u) @if($u->id == $report->paid_by) {{$u->name}} @endif @endforeach</td> --}}
                             {{-- <td>{{$book->salary}}</td> --}}
                             <td>@foreach($property as $u) @if($u->id == $report->property_id) {{$u->name}} @endif @endforeach</td>
+                            {{-- <td>{{$report->amount}}</td> --}}
+
+                            <td>{{$report->charge}}</td>
                             <td>{{$report->amount}}</td>
 
                             {{-- <td>@if(isset($property)) @foreach($property as $own) @if($own->id == $report->property_id) {{$own->name}} </span> @endif @endforeach @endif </td> --}}

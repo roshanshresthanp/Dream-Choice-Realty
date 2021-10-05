@@ -33,6 +33,11 @@ $("#datatable").DataTable({
 //   "scrollY": 200,
         "scrollX": true
 });
+$("#datatable1").DataTable({
+//   "responsive": true
+//   "scrollY": 200,
+        "scrollX": true
+});
 });
 // function confirmation(e)
 //       {
@@ -80,7 +85,7 @@ $("#datatable").DataTable({
     <div class="card card-custom gutter-b">
         <div class="card-header flex-wrap border-0 pt-6 pb-0">
             <div class="card-title mb-0">
-                <h5 class="card-label">Table showing all payments
+                <h5 class="card-label">Amount Paid by Rental Client
                 {{-- <span class="d-block text-muted pt-2 font-size-sm">Scrollable Horizontal &amp; Vertical DataTable</span></h5> --}}
             </div>
             {{-- <div class="card-toolbar">
@@ -102,13 +107,13 @@ $("#datatable").DataTable({
                         <th>Payer Name</th>
                         {{-- <th>Salary</th> --}}
                         <th>Property Name</th>
-                        <th>Amount paid</th>
+                        <th>Amount</th>
                     </tr>
                 </thead>
                 <tbody>
                     
-                    @if(isset($payment) && isset($user) && isset($property) )
-                        @foreach ($payment as $report)
+                    @if(isset($user) && isset($property) )
+                        @foreach (auth()->user()->received as $report)
                         {{-- @if($book->status==1 && $book->approve==1) --}}
                         <tr>
                             <td>{{$loop->iteration}}</td>
@@ -151,7 +156,92 @@ $("#datatable").DataTable({
         </div>
     </div>
     <!--end::Card-->
+    <div class="card card-custom gutter-b">
+        <div class="card-header flex-wrap border-0 pt-6 pb-0">
+            <div class="card-title mb-0">
+                <h5 class="card-label">Amount Paid to Property Owner
+                {{-- <span class="d-block text-muted pt-2 font-size-sm">Scrollable Horizontal &amp; Vertical DataTable</span></h5> --}}
+            </div>
+            {{-- <div class="card-toolbar">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                    <span class="svg-icon svg-icon-md fa fa-plus">
+                    </span> Add Payment 
+                  </button>
+                <!--end::Button-->
+            </div> --}}
+        </div>
+        <div class="card-body">
+            <!--begin: Datatable-->
+            <table class="table table-separate table-head-custom table-checkable" id="datatable1">
+                <thead>
+                    <tr>
+                        <th>S.N</th>
+                        <th>Date and Time</th>
+                        <th>Payment Till</th>
+                        <th>Receiver Name</th>
+                        {{-- <th>Salary</th> --}}
+                        <th>Property Name</th>
+                        <th>Rent</th>
+                        <th>Charges</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    @if(isset($user) && isset($property) )
+                        @foreach (auth()->user()->paid as $report)
+                        {{-- @if($book->status==1 && $book->approve==1) --}}
+                        <tr>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$report->created_at}}</td>
+                            <td>@foreach($book as $u) @if($u->property_id == $report->property_id) {{$u->issued_date}} @endif @endforeach</td>
+                            <td>@foreach($property as $pro)  @if($pro->id == $report->property_id)
+                                 @foreach ($user as $u) @if($pro->owner_id == $u->id) {{$u->name}} @endif @endforeach 
+                                 @endif @endforeach</td>
+                            {{-- <td>{{$book->salary}}</td> --}}
+                            <td>@foreach($property as $u) @if($u->id == $report->property_id) {{$u->name}} @endif @endforeach</td>
+                            <td>@foreach($property as $pro)  @if($pro->id == $report->property_id)
+                                {{$pro->rent}}
+                                @endif @endforeach</td>
+                                <td>{{$report->charge}}</td>
+
+                                <td>{{$report->amount}}</td>
+                            {{-- <td>@foreach($charge as $charge) @if($charge->id==) @endforeach </td> --}}
+
+
+                            {{-- <td>@if(isset($property)) @foreach($property as $own) @if($own->id == $report->property_id) {{$own->name}} </span> @endif @endforeach @endif </td> --}}
+                            {{-- <td>@if(isset($property)) @foreach($property as $own) @if($own->id == $book->property_id) {{$own->location}} </span> @endif @endforeach @endif </td> --}}
+                            {{-- <td>@if(isset($property)) @foreach($property as $own) @if($own->id == $book->property_id) {{$own->area}} </span> @endif @endforeach @endif </td> --}}
+                            {{-- <td>{{$book->agreement}}</td> --}}
+                            {{-- <td>{{$book->occupation}}</td> --}}
+                            
+                            {{-- <td>{{$book->price}}</td> --}}
+                            {{-- <td>@if($book->approve==1) <span class="badge badge-success">Approved</span> @else <span class="badge badge-danger">Disapproved</span>@endif</td>
+                            <td>@if($book->approve==1) <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
+                                Report</button>@else N/A  @endif </td> --}}
+                            {{-- <td> 
+                                <form id="myform" action="{{route('admin.booking.destroy', $book->id) }}" method="post">
+                                    @method('delete')
+                                    @csrf
+                                    <a href="#" onclick="confirmation(event)"><span class="fa fa-trash"></span> </a>
+
+                                    
+                                </form>
+                            </td> --}}
+                        </tr>
+                        {{-- @endif --}}
+                        @endforeach
+                        
+                    
+                    @endif
+                    
+                </tbody>
+            </table>
+            <!--end: Datatable-->
+        </div>
+    </div>
 </div>
+
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">

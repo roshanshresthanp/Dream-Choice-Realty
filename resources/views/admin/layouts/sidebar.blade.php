@@ -122,6 +122,13 @@
                     <span class="menu-text">Message</span>
                 </a>
             </li>
+            <li class="menu-item {{ request()->is('admin/payments')? 'menu-item-active' : '' }}" aria-haspopup="true">
+                <a href="{{route('admin.payment.owner')}}" class="menu-link">
+                    <span class="svg-icon menu-icon fa fa-money-bill">
+                    </span>
+                    <span class="menu-text">Payments</span>
+                </a>
+            </li>
             @else
             <li class="menu-item {{ request()->is('admin/my-booking')? 'menu-item-active' : '' }}" aria-haspopup="true">
                 <a href="{{route('admin.booking.user.active')}}" class="menu-link">
