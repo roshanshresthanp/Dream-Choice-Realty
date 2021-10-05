@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\CardDetail;
+use App\Models\ChargedAmount;
 use App\Models\Payment;
 use App\Models\Property;
 use App\Models\User;
@@ -24,11 +25,12 @@ class PaymentController extends Controller
     {
         if(Gate::allows('isAdmin'))
         {
-        $payment = Payment::all();
-        $user = User::where('role','rental-client')->get();
+        // $payment = Payment::all();
+        $user = User::all();
+        $charges = ChargedAmount::all();
         $book = Booking::where('approve',1)->get();
         $property = Property::all();
-        return view('admin.payment.index',compact('payment','user','property','book'));
+        return view('admin.payment.index',compact('user','property','book','charges'));
         }
         else
         return view('admin.error.error');
@@ -36,13 +38,31 @@ class PaymentController extends Controller
 
     public function userIndex()
     {
-        // $payment = Payment::all();
-        $payment = auth()->user()->payment;
+        if(Gate::allows('isClient'))
+        {
+        $payment = auth()->user()->paid;
         $book = Booking::where('approve',1)->get();
         // dd($payment);
         $user = User::where('role','rental-client')->get();
         $property = Property::all();
         return view('admin.payment.user-payment',compact('payment','user','property','book'));
+        }
+        else
+        return view('admin.error.error');
+    }
+    public function ownerIndex()
+    {
+        if(Gate::allows('isOwner'))
+        {
+        $payment = auth()->user()->received;
+        $book = Booking::where('approve',1)->get();
+        // dd($payment);
+        $user = User::where('role','rental-client')->get();
+        $property = Property::all();
+        return view('admin.payment.owner-payment',compact('payment','user','property','book'));
+        }
+        else
+        return view('admin.error.error');
     }
 
     /**
@@ -71,6 +91,26 @@ class PaymentController extends Controller
         $pay->property_id = $request->property_id;
         $pay->amount = $request->amount;
         $pay->save();
+
+        $pay = new Payment; //Admin pay to owner
+        $pay->paid_by = 1;
+        $pro= Property::find($request->property_id);
+        $pay->received_by = $pro->owner_id;
+        $pay->property_id = $request->property_id;
+
+        $charge = ChargedAmount::where(['property_id'=>$request->property_id,'status'=>1])->latest()->first();
+        $d=0;
+        if(isset($charge->charge)){
+        $d=$charge->charge;
+        $pay->charge = $d;
+        $charge->status=0;
+        $charge->save();
+        }
+        $pay->amount = $request->amount-$d;
+        // dd($request->amount-$charge->charge);
+        
+        $pay->save();
+        
         $booking = Booking::where(['property_id'=>$request->property_id,'approve'=>1])->first();
         // foreach($booking as $book){
             if($request->property_id == $booking->property_id)
@@ -79,14 +119,6 @@ class PaymentController extends Controller
                 $booking->save();
             }
 
-
-        // }
-
-        //     $data = new CardDetail;
-        //     $data->card_number = $request->card_number;
-        //     $data->security_code = $request->security_code;
-        //     $data->expiry_date = $request->expiry_date;
-        // User::find(auth()->user()->id)->cardDetail()->save($data);
         return redirect()->back()->with('success','Payment made successfully !!');
         // CardDetail::find()->user()->associate($user)->save();
 

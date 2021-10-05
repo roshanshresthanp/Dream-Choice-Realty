@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChargedAmountsTable extends Migration
+class AddColumnToPayment extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateChargedAmountsTable extends Migration
      */
     public function up()
     {
-        Schema::create('charged_amounts', function (Blueprint $table) {
-            $table->id();
+        Schema::table('payments', function (Blueprint $table) {
             $table->double('charge')->nullable();
-            $table->integer('property_id')->nullable();
-            $table->boolean('status')->default('1')->nullable();
-            $table->timestamps();
+
         });
     }
 
@@ -29,6 +26,8 @@ class CreateChargedAmountsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('charged_amounts');
+        Schema::table('payments', function (Blueprint $table) {
+            //
+        });
     }
 }

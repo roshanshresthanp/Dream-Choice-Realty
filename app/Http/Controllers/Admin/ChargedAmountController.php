@@ -52,9 +52,13 @@ class ChargedAmountController extends Controller
         $amt->save();
         
         $report = ReportIssue::find($request->report_id);
-        if($report->complete == 0)
+        // dd($report);
+
+        if($report->complete == 0){
         $report->complete = 1;
+        }
         $report->save();
+       
 
         return redirect()->back()->with('success','Charged added successfully');
     }

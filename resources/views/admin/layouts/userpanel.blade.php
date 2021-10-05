@@ -106,7 +106,7 @@
             </a>
             <!--end:Item-->
             <!--begin::Item-->
-            <a href="custom/apps/user/profile-2.html" class="navi-item">
+            <a @can('isAdmin') href="{{route('admin.payment.index')}}" @elsecan('isOwner') href="{{route('admin.payment.owner')}}" @else href="{{route('admin.payment.user')}}" @endcan  class="navi-item">
                 <div class="navi-link">
                     <div class="symbol symbol-40 bg-light mr-3">
                         <div class="symbol-label">
@@ -124,7 +124,7 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <div class="font-weight-bold">My Activities</div>
+                        <div class="font-weight-bold">My Payments</div>
                         <div class="text-muted">Logs and notifications</div>
                     </div>
                 </div>
