@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{asset('frontend/node_modules/bootstrap/dist/css/bootstrap.min.css')}}" >
     <link rel="stylesheet" href="{{asset('frontend/node_modules/bootstrap-icons/font/bootstrap-icons.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/node_modules/owl.carousel/dist/assets/owl.carousel.min.css')}}">
-    
+    <link rel="icon" href="frontend\assets\image\new-loogo.png">
     
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     
@@ -29,7 +29,7 @@
       <div class="col-md-12">
         <div class="header_box">
           <div class="logo">
-            <a href="index.php"><p class="new1">Your </br>Logo</p></a>
+            <a href="index.php"><img src="frontend\assets\image\new-logo.jpg"></a>
           </div>
           <div class="links" id="menu-links">
             <ul>

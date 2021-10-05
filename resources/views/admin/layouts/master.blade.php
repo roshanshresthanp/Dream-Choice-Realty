@@ -50,7 +50,7 @@
 		{{-- <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script> --}}
 
 		<!--end::Layout Themes-->
-		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+		<link rel="shortcut icon" href="assets/media/logos/new-loogo.png" />
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
@@ -103,7 +103,7 @@
 					<div class="brand flex-column-auto" id="kt_brand">
 						<!--begin::Logo-->
 						<a href="index.html" class="brand-logo">
-							<h3>Dream Choice Realty</h3>
+							<img src="{{asset('frontend/assets/image/Capture.jpg')}}">
 						</a>
 						<!--end::Logo-->
 						<!--begin::Toggle-->
