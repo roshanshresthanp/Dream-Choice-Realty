@@ -15,13 +15,23 @@
                     <label>Username</label>
 					<i class="login__icon fas fa-user"></i>
                     
-					<input class="login__input @error('email') is-invalid @enderror" required type="email" placeholder="Email" name="email"/>
+					<input class="login__input @error('email') is-invalid @enderror" required type="email" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus/>
+					@error('email')
+					<span class="invalid-feedback" role="alert">
+						<strong>{{ $message }}</strong>
+					</span>
+				@enderror
 				</div>
 				<div class="login__field">
                     <label>Password</label><br>
 					<i class="login__icon fas fa-lock"></i>
                     
 					<input class="login__input @error('password') is-invalid @enderror" type="password" placeholder="Password" name="password">
+					@error('password')
+					<span class="invalid-feedback" role="alert">
+						<strong>{{ $message }}</strong>
+					</span>
+				@enderror
 				</div>
                 <div class="checkbox-inline">
                     <label class="checkbox m-0 text-muted">
