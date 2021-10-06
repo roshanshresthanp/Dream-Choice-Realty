@@ -30,7 +30,7 @@ $(function () {
 
 $("#datatable").DataTable({
 //   "responsive": true
-  "scrollY": 200,
+//   "scrollY": 200,
         "scrollX": true
 });
 });

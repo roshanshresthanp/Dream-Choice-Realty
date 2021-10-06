@@ -36,7 +36,7 @@
 		<!--begin::Header-->
 		<div class="card-header border-0 bg-danger py-5">
 			<h3 class="card-title font-weight-bolder text-white">Sales Stat</h3>
-			<div class="card-toolbar">
+			{{-- <div class="card-toolbar">
 				<div class="dropdown dropdown-inline">
 					<a href="#" class="btn btn-transparent-white btn-sm font-weight-bolder dropdown-toggle px-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Export</a>
 					<div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
@@ -89,7 +89,7 @@
 						<!--end::Navigation-->
 					</div>
 				</div>
-			</div>
+			</div> --}}
 		</div>
 		<!--end::Header-->
 		<!--begin::Body-->
@@ -632,7 +632,7 @@
 					<a href="#" class="btn btn-transparent-white btn-sm font-weight-bolder dropdown-toggle px-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Export</a>
 					<div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
 						<!--begin::Navigation-->
-						<ul class="navi navi-hover">
+						{{-- <ul class="navi navi-hover">
 							<li class="navi-header pb-1">
 								<span class="text-primary text-uppercase font-weight-bold font-size-sm">Add new:</span>
 							</li>
@@ -676,7 +676,7 @@
 									<span class="navi-text">File</span>
 								</a>
 							</li>
-						</ul>
+						</ul> --}}
 						<!--end::Navigation-->
 					</div>
 				</div>
@@ -706,21 +706,21 @@
 							</svg>
 							<!--end::Svg Icon-->
 						</span>
-						<a href="#" class="text-warning font-weight-bold font-size-h6">Weekly Sales</a>
+						<a href="#" class="text-warning font-weight-bold font-size-h6">{{count($user->userReportIssue)}} Reported Issue </a>
 					</div>
 					<div class="col bg-light-primary px-6 py-8 rounded-xl mb-7">
 						<span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
 							<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Add-user.svg-->
 							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-									<polygon points="0 0 24 0 24 24 0 24" />
-									<path d="M18,8 L16,8 C15.4477153,8 15,7.55228475 15,7 C15,6.44771525 15.4477153,6 16,6 L18,6 L18,4 C18,3.44771525 18.4477153,3 19,3 C19.5522847,3 20,3.44771525 20,4 L20,6 L22,6 C22.5522847,6 23,6.44771525 23,7 C23,7.55228475 22.5522847,8 22,8 L20,8 L20,10 C20,10.5522847 19.5522847,11 19,11 C18.4477153,11 18,10.5522847 18,10 L18,8 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-									<path d="M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
+									<rect x="0" y="0" width="24" height="24" />
+									<path d="M13.2070325,4 C13.0721672,4.47683179 13,4.97998812 13,5.5 C13,8.53756612 15.4624339,11 18.5,11 C19.0200119,11 19.5231682,10.9278328 20,10.7929675 L20,17 C20,18.6568542 18.6568542,20 17,20 L7,20 C5.34314575,20 4,18.6568542 4,17 L4,7 C4,5.34314575 5.34314575,4 7,4 L13.2070325,4 Z" fill="#000000" />
+									<circle fill="#000000" opacity="0.3" cx="18.5" cy="5.5" r="2.5" />
 								</g>
-							</svg>
+							</svg>	
 							<!--end::Svg Icon-->
 						</span>
-						<a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">New Users</a>
+						<a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">{{count($user->unreadNotifications)}} Notifications</a>
 					</div>
 				</div>
 				<!--end::Row-->
@@ -738,7 +738,7 @@
 							</svg>
 							<!--end::Svg Icon-->
 						</span>
-						<a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">Item Orders</a>
+						<a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">@php $c= 0 @endphp @foreach($user->userBooking as $book) @if($book->approve==1)  @php $c+= 1 @endphp @endif @endforeach {{$c}} Active Booking</a>
 					</div>
 					<div class="col bg-light-success px-6 py-8 rounded-xl">
 						<span class="svg-icon svg-icon-3x svg-icon-success d-block my-2">
@@ -752,7 +752,7 @@
 							</svg>
 							<!--end::Svg Icon-->
 						</span>
-						<a href="#" class="text-success font-weight-bold font-size-h6 mt-2">Bug Reports</a>
+						<a href="#" class="text-success font-weight-bold font-size-h6 mt-2">{{count($user->receiver)}} Messages</a>
 					</div>
 				</div>
 				<!--end::Row-->
@@ -780,37 +780,48 @@
 			<!--begin::Item-->
 			<div class="d-flex align-items-center mb-10">
 				<div class="container">
-					<div class="alert alert-warning alert-dismissible fade show" role="alert">
-						<strong>Holy guacamole!</strong> You should check in on some of those fields below.
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						  <span aria-hidden="true">&times;</span>
-						</button>
-					  </div>
-					  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-						<strong>Holy guacamole!</strong> You should check in on some of those fields below.
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						  <span aria-hidden="true">&times;</span>
-						</button>
-					  </div>
+					@foreach($user->userBooking as $book)
+					@if($book->approve==1)
+					@php
+                              $issuedDate = new DateTime($book->issued_date);
+							  $today = new DateTime(date("Y-m-d H:i:s"));
+
+							//   dd($today);
+                            //   $today = date('Y-m-d');
+                              $difference = $today->diff($issuedDate);
+                              $day = $difference->format("%a");                          
+							  
+							@endphp
+							{{-- {{$day}} --}}
+							@if($day>12)
+							<div class="alert alert-light alert-dismissible fade show" role="alert">
+								<strong>Hello {{$user->name}}!</strong> You have only <b style="color:red;"> {{15-$day}}</b> days left to pay rent. Please pay your rent at a time.
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								  <span aria-hidden="true">&times;</span>
+								</button>
+							  </div>
+							@endif
+							  
+							  @endif
+
+
+					@endforeach
+					
 				<!--begin::Symbol-->
-				{{-- <div class="symbol symbol-40 symbol-light-success mr-5">
-					<span class="symbol-label">
-						<img src="assets/media/svg/avatars/009-boy-4.svg" class="h-75 align-self-end" alt="" />
-					</span>
-				</div>
+				
 				<!--end::Symbol-->
 				<!--begin::Text-->
-				<div class="d-flex flex-column flex-grow-1 font-weight-bold">
+				{{-- <div class="d-flex flex-column flex-grow-1 font-weight-bold">
 					<a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Ricky Hunt</a>
 					<span class="text-muted">PHP, SQLite, Artisan CLI</span>
-				</div>
+				</div> --}}
 				<!--end::Text-->
 				<!--begin::Dropdown-->
-				<div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="Quick actions" data-placement="left">
+				{{-- <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="Quick actions" data-placement="left">
 					<a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<i class="ki ki-bold-more-hor"></i>
-					</a>
-				</div> --}}
+					</a> --}}
+				</div>
 				<!--end::Dropdown-->
 			</div>
 			<!--end::Item-->
@@ -832,60 +843,7 @@
 				<!--begin::Header-->
 				<div class="card-header border-0 bg-danger py-5">
 					<h3 class="card-title font-weight-bolder text-white">Sales Stat</h3>
-					<div class="card-toolbar">
-						<div class="dropdown dropdown-inline">
-							<a href="#" class="btn btn-transparent-white btn-sm font-weight-bolder dropdown-toggle px-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Export</a>
-							<div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-								<!--begin::Navigation-->
-								<ul class="navi navi-hover">
-									<li class="navi-header pb-1">
-										<span class="text-primary text-uppercase font-weight-bold font-size-sm">Add new:</span>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-shopping-cart-1"></i>
-											</span>
-											<span class="navi-text">Order</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-calendar-8"></i>
-											</span>
-											<span class="navi-text">Event</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-graph-1"></i>
-											</span>
-											<span class="navi-text">Report</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-rocket-1"></i>
-											</span>
-											<span class="navi-text">Post</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-writing"></i>
-											</span>
-											<span class="navi-text">File</span>
-										</a>
-									</li>
-								</ul>
-								<!--end::Navigation-->
-							</div>
-						</div>
-					</div>
+					
 				</div>
 				<!--end::Header-->
 				<!--begin::Body-->
@@ -911,7 +869,7 @@
 									</svg>
 									<!--end::Svg Icon-->
 								</span>
-								<a href="#" class="text-warning font-weight-bold font-size-h6">Weekly Sales</a>
+								<a href="#" class="text-warning font-weight-bold font-size-h6">{{count($book)}} Active Booking</a>
 							</div>
 							<div class="col bg-light-primary px-6 py-8 rounded-xl mb-7">
 								<span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
@@ -925,7 +883,7 @@
 									</svg>
 									<!--end::Svg Icon-->
 								</span>
-								<a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">New Users</a>
+								<a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">{{count($owners)}} Property Owners</a>
 							</div>
 						</div>
 						<!--end::Row-->
@@ -943,7 +901,7 @@
 									</svg>
 									<!--end::Svg Icon-->
 								</span>
-								<a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">Item Orders</a>
+								<a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">{{count($property)}} Properties</a>
 							</div>
 							<div class="col bg-light-success px-6 py-8 rounded-xl">
 								<span class="svg-icon svg-icon-3x svg-icon-success d-block my-2">
@@ -957,7 +915,7 @@
 									</svg>
 									<!--end::Svg Icon-->
 								</span>
-								<a href="#" class="text-success font-weight-bold font-size-h6 mt-2">Bug Reports</a>
+								<a href="#" class="text-success font-weight-bold font-size-h6 mt-2">{{count($contacts)}} Enquiries</a>
 							</div>
 						</div>
 						<!--end::Row-->
@@ -968,7 +926,7 @@
 			</div>
 			<!--end::Mixed Widget 1-->
 		</div>
-		<div class="col-lg-6 col-xxl-4">
+		{{-- <div class="col-lg-6 col-xxl-4">
 			<!--begin::List Widget 9-->
 			<div class="card card-custom card-stretch gutter-b">
 				<!--begin::Header-->
@@ -1172,6 +1130,85 @@
 				<!--end: Card Body-->
 			</div>
 			<!--end: List Widget 9-->
+		</div> --}}
+		<div class="col-lg-6 col-xxl-4 order-1 order-xxl-2">
+			<!--begin::List Widget 4-->
+			<div class="card card-custom card-stretch gutter-b">
+				<!--begin::Header-->
+				<div class="card-header border-0">
+					<h3 class="card-title font-weight-bolder text-dark">Last five transactions</h3>
+				
+				</div>
+				<!--end::Header-->
+				<!--begin::Body-->
+				<div class="card-body pt-2">
+					<!--begin::Item-->
+					@foreach ($user->received as $item)
+					<div class="d-flex align-items-center mt-4">
+						<!--begin::Bullet-->
+						<span class="bullet bullet-bar bg-success align-self-stretch"></span>
+						<!--end::Bullet-->
+						<!--begin::Checkbox-->
+						<label class="checkbox checkbox-lg checkbox-light-success fa fa-money-bill  checkbox-inline flex-shrink-0 m-0 mx-4">
+							{{-- <input type="checkbox" name="select" value="1" /> --}}
+							{{-- <span></span> --}}
+						</label>
+						<!--end::Checkbox-->
+						<!--begin::Text-->
+						
+						<div class="d-flex flex-column flex-grow-1">
+							<a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">You have received a payment of AUD {{$item->amount}} from @foreach($users as $u) @if($u->id == $item->paid_by) {{$u->name}} @endif @endforeach for @foreach($property as $u) @if($u->id == $item->property_id) {{$u->name}} @endif @endforeach
+							</a>
+							<span class="text-muted font-weight-bold"> {{$item->created_at}} </span>
+						</div>
+						<!--end::Text-->
+
+					</div>
+					@endforeach
+
+					
+				
+				</div>
+				<!--end::Body-->
+			</div>
+			<!--end:List Widget 4-->
+		</div>
+		<div class="col-lg-6 col-xxl-4 order-1 order-xxl-2">
+			<!--begin::List Widget 3-->
+			<div class="card card-custom card-stretch gutter-b">
+				<!--begin::Header-->
+				<div class="card-header border-0">
+					<h3 class="card-title font-weight-bolder text-dark">Recently solved issues</h3>
+					
+				</div>
+				<!--end::Header-->
+				<!--begin::Body-->
+				<div class="card-body pt-2">
+					<!--begin::Item-->
+					@foreach ($issue as $item)
+					
+					<div class="d-flex align-items-center mb-10">
+						<!--begin::Symbol-->
+						<div class="symbol symbol-40 symbol-light-info mr-5">
+							<span class="symbol-label">
+								<i class="fa fa-bug"></i>
+								{{-- <img src="assets/media/svg/avatars/009-boy-4.svg" class="h-75 align-self-end" alt="" /> --}}
+							</span>
+						</div>
+						<!--end::Symbol-->
+						<!--begin::Text-->
+						<div class="d-flex flex-column flex-grow-1 font-weight-bold">
+							<a href="#" class="text-dark text-hover-primary mb-1 font-size-lg"> {{$item->subject}} </a>
+							<span class="text-muted">{{$item->created_at}}</span>
+						</div>
+						<!--end::Text-->
+					</div>
+					@endforeach
+					<!--end::Item-->
+				</div>
+				<!--end::Body-->
+			</div>
+			<!--end::List Widget 3-->
 		</div>
 		
 		
@@ -1180,82 +1217,30 @@
 			<div class="card card-custom card-stretch gutter-b">
 				<!--begin::Header-->
 				<div class="card-header border-0">
-					<h3 class="card-title font-weight-bolder text-dark">Property Owners</h3>
-					<div class="card-toolbar">
-						<div class="dropdown dropdown-inline">
-							<a href="#" class="btn btn-light-primary btn-sm font-weight-bolder dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">August</a>
-							<div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-								<!--begin::Navigation-->
-								<ul class="navi navi-hover">
-									<li class="navi-header pb-1">
-										<span class="text-primary text-uppercase font-weight-bold font-size-sm">Add new:</span>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-shopping-cart-1"></i>
-											</span>
-											<span class="navi-text">Order</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-calendar-8"></i>
-											</span>
-											<span class="navi-text">Event</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-graph-1"></i>
-											</span>
-											<span class="navi-text">Report</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-rocket-1"></i>
-											</span>
-											<span class="navi-text">Post</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-writing"></i>
-											</span>
-											<span class="navi-text">File</span>
-										</a>
-									</li>
-								</ul>
-								<!--end::Navigation-->
-							</div>
-						</div>
-					</div>
+					<h3 class="card-title font-weight-bolder text-dark">Recently added Property Owners</h3>
+					
 				</div>
 				<!--end::Header-->
 				<!--begin::Body-->
 				<div class="card-body pt-2">
 					<!--begin::Item-->
+					@foreach($powners as $own)
 					<div class="d-flex align-items-center mb-10">
 						<!--begin::Symbol-->
-						<div class="symbol symbol-40 symbol-light-success mr-5">
+						<div class="symbol symbol-40  mr-5">
 							<span class="symbol-label">
-								<img src="assets/media/svg/avatars/009-boy-4.svg" class="h-75 align-self-end" alt="" />
+								<img src="{{asset('storage/images/user/'.$own->photo)}}" class="h-75 align-self-end" alt="" />
 							</span>
 						</div>
 						<!--end::Symbol-->
 						<!--begin::Text-->
 						<div class="d-flex flex-column flex-grow-1 font-weight-bold">
-							<a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Ricky Hunt</a>
-							<span class="text-muted">PHP, SQLite, Artisan CLI</span>
+							<a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">{{$own->name}}</a>
+							<span class="text-muted">{{$own->email}}, {{$own->contact	}}</span>
 						</div>
 						<!--end::Text-->
 						<!--begin::Dropdown-->
-						<div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="Quick actions" data-placement="left">
+						{{-- <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="Quick actions" data-placement="left">
 							<a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="ki ki-bold-more-hor"></i>
 							</a>
@@ -1310,787 +1295,16 @@
 								</ul>
 								<!--end::Navigation-->
 							</div>
-						</div>
+						</div> --}}
 						<!--end::Dropdown-->
 					</div>
-					<!--end::Item-->
-					<!--begin::Item-->
-					<div class="d-flex align-items-center mb-10">
-						<!--begin::Symbol-->
-						<div class="symbol symbol-40 symbol-light-success mr-5">
-							<span class="symbol-label">
-								<img src="assets/media/svg/avatars/006-girl-3.svg" class="h-75 align-self-end" alt="" />
-							</span>
-						</div>
-						<!--end::Symbol-->
-						<!--begin::Text-->
-						<div class="d-flex flex-column flex-grow-1 font-weight-bold">
-							<a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Anne Clarc</a>
-							<span class="text-muted">PHP, SQLite, Artisan CLI</span>
-						</div>
-						<!--end::Text-->
-						<!--begin::Dropdown-->
-						<div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="Quick actions" data-placement="left">
-							<a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="ki ki-bold-more-hor"></i>
-							</a>
-							<div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right">
-								<!--begin::Navigation-->
-								<ul class="navi navi-hover">
-									<li class="navi-header font-weight-bold py-4">
-										<span class="font-size-lg">Choose Label:</span>
-										<i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="Click to learn more..."></i>
-									</li>
-									<li class="navi-separator mb-3 opacity-70"></li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-success">Customer</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-danger">Partner</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-warning">Suplier</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-primary">Member</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-dark">Staff</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-separator mt-3 opacity-70"></li>
-									<li class="navi-footer py-4">
-										<a class="btn btn-clean font-weight-bold btn-sm" href="#">
-										<i class="ki ki-plus icon-sm"></i>Add new</a>
-									</li>
-								</ul>
-								<!--end::Navigation-->
-							</div>
-						</div>
-						<!--end::Dropdown-->
-					</div>
-					<!--end::Item-->
-					<!--begin::Item-->
-					<div class="d-flex align-items-center mb-10">
-						<!--begin::Symbol-->
-						<div class="symbol symbol-40 symbol-light-success mr-5">
-							<span class="symbol-label">
-								<img src="assets/media/svg/avatars/011-boy-5.svg" class="h-75 align-self-end" alt="" />
-							</span>
-						</div>
-						<!--end::Symbol-->
-						<!--begin::Text-->
-						<div class="d-flex flex-column flex-grow-1 font-weight-bold">
-							<a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Kristaps Zumman</a>
-							<span class="text-muted">PHP, SQLite, Artisan CLI</span>
-						</div>
-						<!--end::Text-->
-						<!--begin::Dropdown-->
-						<div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="Quick actions" data-placement="left">
-							<a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="ki ki-bold-more-hor"></i>
-							</a>
-							<div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right">
-								<!--begin::Navigation-->
-								<ul class="navi navi-hover">
-									<li class="navi-header font-weight-bold py-4">
-										<span class="font-size-lg">Choose Label:</span>
-										<i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="Click to learn more..."></i>
-									</li>
-									<li class="navi-separator mb-3 opacity-70"></li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-success">Customer</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-danger">Partner</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-warning">Suplier</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-primary">Member</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-dark">Staff</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-separator mt-3 opacity-70"></li>
-									<li class="navi-footer py-4">
-										<a class="btn btn-clean font-weight-bold btn-sm" href="#">
-										<i class="ki ki-plus icon-sm"></i>Add new</a>
-									</li>
-								</ul>
-								<!--end::Navigation-->
-							</div>
-						</div>
-						<!--end:Dropdown-->
-					</div>
-					<!--end::Item-->
-					<!--begin::Item-->
-					<div class="d-flex align-items-center mb-10">
-						<!--begin::Symbol-->
-						<div class="symbol symbol-40 symbol-light-success mr-5">
-							<span class="symbol-label">
-								<img src="assets/media/svg/avatars/015-boy-6.svg" class="h-75 align-self-end" alt="" />
-							</span>
-						</div>
-						<!--end::Symbol-->
-						<!--begin::Text-->
-						<div class="d-flex flex-column flex-grow-1 font-weight-bold">
-							<a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Ricky Hunt</a>
-							<span class="text-muted">PHP, SQLite, Artisan CLI</span>
-						</div>
-						<!--end::Text-->
-						<!--begin::Dropdown-->
-						<div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="Quick actions" data-placement="left">
-							<a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="ki ki-bold-more-hor"></i>
-							</a>
-							<div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right">
-								<!--begin::Navigation-->
-								<ul class="navi navi-hover">
-									<li class="navi-header font-weight-bold py-4">
-										<span class="font-size-lg">Choose Label:</span>
-										<i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="Click to learn more..."></i>
-									</li>
-									<li class="navi-separator mb-3 opacity-70"></li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-success">Customer</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-danger">Partner</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-warning">Suplier</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-primary">Member</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-dark">Staff</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-separator mt-3 opacity-70"></li>
-									<li class="navi-footer py-4">
-										<a class="btn btn-clean font-weight-bold btn-sm" href="#">
-										<i class="ki ki-plus icon-sm"></i>Add new</a>
-									</li>
-								</ul>
-								<!--end::Navigation-->
-							</div>
-						</div>
-						<!--end::Dropdown-->
-					</div>
-					<!--end::Item-->
-					<!--begin::Item-->
-					<div class="d-flex align-items-center mb-2">
-						<!--begin::Symbol-->
-						<div class="symbol symbol-40 symbol-light-success mr-5">
-							<span class="symbol-label">
-								<img src="assets/media/svg/avatars/016-boy-7.svg" class="h-75 align-self-end" alt="" />
-							</span>
-						</div>
-						<!--end::Symbol-->
-						<!--begin::Text-->
-						<div class="d-flex flex-column flex-grow-1 font-weight-bold">
-							<a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Carles Puyol</a>
-							<span class="text-muted">PHP, SQLite, Artisan CLI</span>
-						</div>
-						<!--end::Text-->
-						<!--begin::Dropdown-->
-						<div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="Quick actions" data-placement="left">
-							<a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="ki ki-bold-more-hor"></i>
-							</a>
-							<div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right">
-								<!--begin::Navigation-->
-								<ul class="navi navi-hover">
-									<li class="navi-header font-weight-bold py-4">
-										<span class="font-size-lg">Choose Label:</span>
-										<i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="Click to learn more..."></i>
-									</li>
-									<li class="navi-separator mb-3 opacity-70"></li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-success">Customer</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-danger">Partner</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-warning">Suplier</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-primary">Member</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-dark">Staff</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-separator mt-3 opacity-70"></li>
-									<li class="navi-footer py-4">
-										<a class="btn btn-clean font-weight-bold btn-sm" href="#">
-										<i class="ki ki-plus icon-sm"></i>Add new</a>
-									</li>
-								</ul>
-								<!--end::Navigation-->
-							</div>
-						</div>
-						<!--end::Dropdown-->
-					</div>
-					<!--end::Item-->
+					@endforeach
 				</div>
 				<!--end::Body-->
 			</div>
 			<!--end::List Widget 3-->
 		</div>
-		<div class="col-lg-6 col-xxl-4 order-1 order-xxl-2">
-			<!--begin::List Widget 4-->
-			<div class="card card-custom card-stretch gutter-b">
-				<!--begin::Header-->
-				<div class="card-header border-0">
-					<h3 class="card-title font-weight-bolder text-dark">Todo</h3>
-					<div class="card-toolbar">
-						<div class="dropdown dropdown-inline">
-							<a href="#" class="btn btn-light btn-sm font-size-sm font-weight-bolder dropdown-toggle text-dark-75" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create</a>
-							<div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-								<!--begin::Navigation-->
-								<ul class="navi navi-hover">
-									<li class="navi-header pb-1">
-										<span class="text-primary text-uppercase font-weight-bold font-size-sm">Add new:</span>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-shopping-cart-1"></i>
-											</span>
-											<span class="navi-text">Order</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-calendar-8"></i>
-											</span>
-											<span class="navi-text">Event</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-graph-1"></i>
-											</span>
-											<span class="navi-text">Report</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-rocket-1"></i>
-											</span>
-											<span class="navi-text">Post</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-writing"></i>
-											</span>
-											<span class="navi-text">File</span>
-										</a>
-									</li>
-								</ul>
-								<!--end::Navigation-->
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--end::Header-->
-				<!--begin::Body-->
-				<div class="card-body pt-2">
-					<!--begin::Item-->
-					<div class="d-flex align-items-center">
-						<!--begin::Bullet-->
-						<span class="bullet bullet-bar bg-success align-self-stretch"></span>
-						<!--end::Bullet-->
-						<!--begin::Checkbox-->
-						<label class="checkbox checkbox-lg checkbox-light-success checkbox-inline flex-shrink-0 m-0 mx-4">
-							<input type="checkbox" name="select" value="1" />
-							<span></span>
-						</label>
-						<!--end::Checkbox-->
-						<!--begin::Text-->
-						<div class="d-flex flex-column flex-grow-1">
-							<a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">Create FireStone Logo</a>
-							<span class="text-muted font-weight-bold">Due in 2 Days</span>
-						</div>
-						<!--end::Text-->
-						<!--begin::Dropdown-->
-						<div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="Quick actions" data-placement="left">
-							<a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="ki ki-bold-more-hor"></i>
-							</a>
-							<div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right">
-								<!--begin::Navigation-->
-								<ul class="navi navi-hover">
-									<li class="navi-header font-weight-bold py-4">
-										<span class="font-size-lg">Choose Label:</span>
-										<i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="Click to learn more..."></i>
-									</li>
-									<li class="navi-separator mb-3 opacity-70"></li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-success">Customer</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-danger">Partner</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-warning">Suplier</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-primary">Member</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-dark">Staff</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-separator mt-3 opacity-70"></li>
-									<li class="navi-footer py-4">
-										<a class="btn btn-clean font-weight-bold btn-sm" href="#">
-										<i class="ki ki-plus icon-sm"></i>Add new</a>
-									</li>
-								</ul>
-								<!--end::Navigation-->
-							</div>
-						</div>
-						<!--end::Dropdown-->
-					</div>
-					<!--end:Item-->
-					<!--begin::Item-->
-					<div class="d-flex align-items-center mt-10">
-						<!--begin::Bullet-->
-						<span class="bullet bullet-bar bg-primary align-self-stretch"></span>
-						<!--end::Bullet-->
-						<!--begin::Checkbox-->
-						<label class="checkbox checkbox-lg checkbox-light-primary checkbox-inline flex-shrink-0 m-0 mx-4">
-							<input type="checkbox" value="1" />
-							<span></span>
-						</label>
-						<!--end::Checkbox-->
-						<!--begin::Text-->
-						<div class="d-flex flex-column flex-grow-1">
-							<a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">Stakeholder Meeting</a>
-							<span class="text-muted font-weight-bold">Due in 3 Days</span>
-						</div>
-						<!--end::Text-->
-						<!--begin::Dropdown-->
-						<div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="Quick actions" data-placement="left">
-							<a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="ki ki-bold-more-hor"></i>
-							</a>
-							<div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right">
-								<!--begin::Navigation-->
-								<ul class="navi navi-hover">
-									<li class="navi-header font-weight-bold py-4">
-										<span class="font-size-lg">Choose Label:</span>
-										<i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="Click to learn more..."></i>
-									</li>
-									<li class="navi-separator mb-3 opacity-70"></li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-success">Customer</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-danger">Partner</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-warning">Suplier</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-primary">Member</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-dark">Staff</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-separator mt-3 opacity-70"></li>
-									<li class="navi-footer py-4">
-										<a class="btn btn-clean font-weight-bold btn-sm" href="#">
-										<i class="ki ki-plus icon-sm"></i>Add new</a>
-									</li>
-								</ul>
-								<!--end::Navigation-->
-							</div>
-						</div>
-						<!--end::Dropdown-->
-					</div>
-					<!--end::Item-->
-					<!--begin::Item-->
-					<div class="d-flex align-items-center mt-10">
-						<!--begin::Bullet-->
-						<span class="bullet bullet-bar bg-warning align-self-stretch"></span>
-						<!--end::Bullet-->
-						<!--begin::Checkbox-->
-						<label class="checkbox checkbox-lg checkbox-light-warning checkbox-inline flex-shrink-0 m-0 mx-4">
-							<input type="checkbox" value="1" />
-							<span></span>
-						</label>
-						<!--end::Checkbox-->
-						<!--begin::Text-->
-						<div class="d-flex flex-column flex-grow-1">
-							<a href="#" class="text-dark-75 text-hover-primary font-size-sm font-weight-bold font-size-lg mb-1">Scoping &amp; Estimations</a>
-							<span class="text-muted font-weight-bold">Due in 5 Days</span>
-						</div>
-						<!--end::Text-->
-						<!--begin: Dropdown-->
-						<div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="Quick actions" data-placement="left">
-							<a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="ki ki-bold-more-hor"></i>
-							</a>
-							<div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right">
-								<!--begin::Navigation-->
-								<ul class="navi navi-hover">
-									<li class="navi-header font-weight-bold py-4">
-										<span class="font-size-lg">Choose Label:</span>
-										<i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="Click to learn more..."></i>
-									</li>
-									<li class="navi-separator mb-3 opacity-70"></li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-success">Customer</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-danger">Partner</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-warning">Suplier</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-primary">Member</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-dark">Staff</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-separator mt-3 opacity-70"></li>
-									<li class="navi-footer py-4">
-										<a class="btn btn-clean font-weight-bold btn-sm" href="#">
-										<i class="ki ki-plus icon-sm"></i>Add new</a>
-									</li>
-								</ul>
-								<!--end::Navigation-->
-							</div>
-						</div>
-						<!--end::Dropdown-->
-					</div>
-					<!--end::Item-->
-					<!--begin::Item-->
-					<div class="d-flex align-items-center mt-10">
-						<!--begin::Bullet-->
-						<span class="bullet bullet-bar bg-info align-self-stretch"></span>
-						<!--end::Bullet-->
-						<!--begin::Checkbox-->
-						<label class="checkbox checkbox-lg checkbox-light-info checkbox-inline flex-shrink-0 m-0 mx-4">
-							<input type="checkbox" value="1" />
-							<span></span>
-						</label>
-						<!--end::Checkbox-->
-						<!--begin::Text-->
-						<div class="d-flex flex-column flex-grow-1">
-							<a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">Sprint Showcase</a>
-							<span class="text-muted font-weight-bold">Due in 1 Day</span>
-						</div>
-						<!--end::Text-->
-						<!--begin::Dropdown-->
-						<div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="Quick actions" data-placement="left">
-							<a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="ki ki-bold-more-hor"></i>
-							</a>
-							<div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right">
-								<!--begin::Navigation-->
-								<ul class="navi navi-hover py-5">
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-drop"></i>
-											</span>
-											<span class="navi-text">New Group</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-list-3"></i>
-											</span>
-											<span class="navi-text">Contacts</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-rocket-1"></i>
-											</span>
-											<span class="navi-text">Groups</span>
-											<span class="navi-link-badge">
-												<span class="label label-light-primary label-inline font-weight-bold">new</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-bell-2"></i>
-											</span>
-											<span class="navi-text">Calls</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-gear"></i>
-											</span>
-											<span class="navi-text">Settings</span>
-										</a>
-									</li>
-									<li class="navi-separator my-3"></li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-magnifier-tool"></i>
-											</span>
-											<span class="navi-text">Help</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-icon">
-												<i class="flaticon2-bell-2"></i>
-											</span>
-											<span class="navi-text">Privacy</span>
-											<span class="navi-link-badge">
-												<span class="label label-light-danger label-rounded font-weight-bold">5</span>
-											</span>
-										</a>
-									</li>
-								</ul>
-								<!--end::Navigation-->
-							</div>
-						</div>
-						<!--end::Dropdown-->
-					</div>
-					<!--end::Item-->
-					<!--begin::Item-->
-					<div class="d-flex align-items-center mt-10">
-						<!--begin::Bullet-->
-						<span class="bullet bullet-bar bg-danger align-self-stretch"></span>
-						<!--end::Bullet-->
-						<!--begin::Checkbox-->
-						<label class="checkbox checkbox-lg checkbox-light-danger checkbox-inline flex-shrink-0 m-0 mx-4">
-							<input type="checkbox" value="1" />
-							<span></span>
-						</label>
-						<!--end::Checkbox:-->
-						<!--begin::Title-->
-						<div class="d-flex flex-column flex-grow-1">
-							<a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">Project Retro</a>
-							<span class="text-muted font-weight-bold">Due in 12 Days</span>
-						</div>
-						<!--end::Text-->
-						<!--begin: Dropdown-->
-						<div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="Quick actions" data-placement="left">
-							<a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="ki ki-bold-more-hor"></i>
-							</a>
-							<div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right">
-								<!--begin::Navigation-->
-								<ul class="navi navi-hover">
-									<li class="navi-header font-weight-bold py-4">
-										<span class="font-size-lg">Choose Label:</span>
-										<i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="Click to learn more..."></i>
-									</li>
-									<li class="navi-separator mb-3 opacity-70"></li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-success">Customer</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-danger">Partner</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-warning">Suplier</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-primary">Member</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-item">
-										<a href="#" class="navi-link">
-											<span class="navi-text">
-												<span class="label label-xl label-inline label-light-dark">Staff</span>
-											</span>
-										</a>
-									</li>
-									<li class="navi-separator mt-3 opacity-70"></li>
-									<li class="navi-footer py-4">
-										<a class="btn btn-clean font-weight-bold btn-sm" href="#">
-										<i class="ki ki-plus icon-sm"></i>Add new</a>
-									</li>
-								</ul>
-								<!--end::Navigation-->
-							</div>
-						</div>
-						<!--end::Dropdown-->
-					</div>
-					<!--end::Item-->
-				</div>
-				<!--end::Body-->
-			</div>
-			<!--end:List Widget 4-->
-		</div>
+		
 		
 	</div>
 	<!--end::Row-->
