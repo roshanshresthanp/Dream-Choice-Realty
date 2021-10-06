@@ -98,15 +98,17 @@ class PaymentController extends Controller
         $pay->received_by = $pro->owner_id;
         $pay->property_id = $request->property_id;
 
-        $charge = ChargedAmount::where(['property_id'=>$request->property_id,'status'=>1])->latest()->first();
-        $d=0;
-        if(isset($charge->charge)){
-        $d=$charge->charge;
-        $pay->charge = $d;
-        $charge->status=0;
-        $charge->save();
+        $charge = ChargedAmount::where(['property_id'=>$request->property_id,'status'=>1])->get();
+        $amt=0;
+        foreach($charge as $d){
+        $amt+=$d->charge;
+        $d->status=0;
+        $d->save();
         }
-        $pay->amount = $request->amount-$d;
+        $pay->charge = $amt;
+        // $charge->save();
+        
+        $pay->amount = $request->amount-$amt;
         // dd($request->amount-$charge->charge);
         
         $pay->save();

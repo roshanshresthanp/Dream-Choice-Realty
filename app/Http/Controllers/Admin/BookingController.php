@@ -284,6 +284,13 @@ class BookingController extends Controller
         }
        
         $book->save();
+        ///
+        $del = Booking::where(['property_id'=>$book->property_id,'approve'=>0])->get();
+        foreach($del as $d)
+        {
+            $d->delete();
+        }
+
         $pro = Property::find($book->property_id);
         if($pro->status==1){
             $pro->status=0;

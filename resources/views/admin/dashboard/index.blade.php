@@ -334,12 +334,12 @@
                             //   $today = date('Y-m-d');
                               $difference = $today->diff($issuedDate);
                               $day = $difference->format("%a");                          
-							  
+							//   dd($day);
 							@endphp
-							{{-- {{$day}} --}}
-							@if($day>12)
+							  {{-- {{dd($today<$issuedDate);}} --}}
+							  @if($day<=3 && $today>$issuedDate)
 							<div class="alert alert-light alert-dismissible fade show" role="alert">
-								<strong>Hello {{$user->name}}!</strong> You have only <b style="color:red;"> {{15-$day}}</b> days left to pay rent. Please pay your rent at a time.
+								<strong>Hello {{$user->name}}!</strong> You have only <b style="color:red;"> {{$day}}</b> days left to pay rent. Please pay your rent at a time.
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 								  <span aria-hidden="true">&times;</span>
 								</button>
@@ -347,8 +347,6 @@
 							@endif
 							  
 							  @endif
-
-
 					@endforeach
 					
 				<!--begin::Symbol-->

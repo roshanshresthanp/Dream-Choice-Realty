@@ -126,7 +126,7 @@ function confirmation(e)
                                 @elseif($report->status==1) <span class="badge badge-warning">Pending</span> 
                                 @else N/A @endif</td>
                                 <td>@if($report->complete==1) <span class="badge badge-success">Completed</span>
-                                     @elseif($report->approve==1) <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#example{{$report->property_id}}ModalCenter">Add expenses</button>
+                                     @elseif($report->approve==1) <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#example{{$report->id}}ModalCenter">Add expenses</button>
                                         {{-- <a href="{{route('admin.issue.complete',$report->id)}}"><span class="btn btn-info">Complete</span></a> --}}
                                      @else N/A @endif</td>
 
@@ -163,7 +163,7 @@ function confirmation(e)
 </div>
 @if(isset($issue))
     @foreach ($issue as $item)
-    @php $id=$item->property_id; @endphp
+    @php $id=$item->id; @endphp
 <div class="modal fade" id="example{{$id}}ModalCenter" tabindex="-1" role="dialog" aria-labelledby="example{{$id}}ModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">

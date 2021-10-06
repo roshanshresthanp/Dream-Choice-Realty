@@ -38,6 +38,7 @@ class ChargedAmountController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $this->validate($request,[
 
             'charge'=>'required|numeric',
@@ -52,7 +53,7 @@ class ChargedAmountController extends Controller
         $amt->save();
         
         $report = ReportIssue::find($request->report_id);
-        // dd($report);
+        // dd($report->id);
 
         if($report->complete == 0){
         $report->complete = 1;
