@@ -4,7 +4,7 @@
     <title>User Registration</title>
 </head>
 <body>
-    <h1>User registration Details<h1><br>
+    <h1>User registration Details</h1><br>
     <h4>Welcome to Dream Choice Realty</h4><br>
        <p> Your sign in detail is:<br>
         Username: :{{isset($data['email'])?$data['email']:''}}<br>

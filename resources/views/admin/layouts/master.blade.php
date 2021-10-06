@@ -102,7 +102,7 @@
 					<!--begin::Brand-->
 					<div class="brand flex-column-auto" id="kt_brand">
 						<!--begin::Logo-->
-						<a href="index.html" class="brand-logo">
+						<a href="{{url('/')}}" class="brand-logo">
 							<img src="{{asset('frontend/assets/image/Capture.jpg')}}">
 						</a>
 						<!--end::Logo-->

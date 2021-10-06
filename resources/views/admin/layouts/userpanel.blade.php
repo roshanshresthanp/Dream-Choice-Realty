@@ -18,7 +18,7 @@
             </div>
             <div class="d-flex flex-column">
                 <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{{Auth::user()->name}}</a>
-                <div class="text-muted mt-1">{{ucwords(Auth::user()->role)}}</div>
+                <div class="text-muted mt-1">{{ucwords(str_replace('-',' ', (Auth::user()->role)))}}</div>
                 <div class="navi mt-2">
                     <a href="#" class="navi-item">
                         <span class="navi-link p-0 pb-2">
@@ -131,7 +131,7 @@
             </a>
             <!--end:Item-->
             <!--begin::Item-->
-            <a href="custom/apps/userprofile-1/overview.html" class="navi-item">
+            {{-- <a href="custom/apps/userprofile-1/overview.html" class="navi-item">
                 <div class="navi-link">
                     <div class="symbol symbol-40 bg-light mr-3">
                         <div class="symbol-label">
@@ -153,7 +153,7 @@
                         <div class="text-muted">latest tasks and projects</div>
                     </div>
                 </div>
-            </a>
+            </a> --}}
             <!--end:Item-->
         </div>
         <!--end::Nav-->

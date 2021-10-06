@@ -11,7 +11,7 @@
         </div>
         <!--end::Info-->
         <!--begin::Toolbar-->
-        <div class="d-flex align-items-center">
+        {{-- <div class="d-flex align-items-center">
             <!--begin::Actions-->
             <a href="#" class="btn btn-clean btn-sm font-weight-bold font-size-base mr-1">Today</a>
             <a href="#" class="btn btn-clean btn-sm font-weight-bold font-size-base mr-1">Month</a>
@@ -109,7 +109,7 @@
                 </div>
             </div>
             <!--end::Dropdowns-->
-        </div>
+        </div> --}}
         <!--end::Toolbar-->
     </div>
 </div>
