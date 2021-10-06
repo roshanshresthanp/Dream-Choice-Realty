@@ -92,7 +92,7 @@ function confirmation(e)
                         <th>Property</th>
                         {{-- <th>Address</th>
                         <th>Previous Address</th> --}}
-                        <th>Agreement</th>
+                        {{-- <th>Agreement</th> --}}
                         {{-- <th>Occupation</th> --}}
                         {{-- <th>Price</th> --}}
                         {{-- <th>Request to owner</th> --}}

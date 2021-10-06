@@ -197,9 +197,9 @@
             </div>
            
               <div class="room-details-box">
-                
+              
                 <h1 class="head-three head_dark">Property Details</h1>
-              </div>
+              </div></div>
               <div class="details-table">
                 <div class="details-table-box">
                   <div class="row">
@@ -330,6 +330,7 @@
       <div id="delux1" class="rooms-toggle room-active">
         <div class="row">
           @foreach($property as $pro)
+          @if($pro->status == 1)
           <div  class="col-md-4">
             <a href="{{route('property.view',$pro->id)}}">
               <div class="rooms-box">
@@ -337,23 +338,23 @@
                   <img src="{{asset('storage/images/property/'.$pro->featured_photo)}}" alt="aaa">
                 </div>
                 <div class="rooms-info text-center">
-                  <span class="price">From <span class="value">AUD </span><span>{{$pro->rent}}</span></span>
+                  <span class="price">From <span class="value">AUD </span><span>{{$pro->rent}}</span></span><br>
                   <h1 class="head-four head_red pb-3 f-w-5"> {{$pro->name}}</h1>
                   <p class="para-two para_gray " style="color:red;">{!!str_limit($pro->facility,20)!!}</p>
                   <div class="rooms-scale">
                     <div class="scale">
-                      <img class="" src="frontend\assets\image\bathroom.jpg" alt="">
+                      <img class="" src="{{asset('frontend\assets\image\bathroom.jpg')}}" alt="">
                       
                       <span class="para-two">{{$pro->bathroom}}</span>
                     </div>
                     <div class="scale">
-                      <img class="" src="frontend\assets\image\room.png" alt="">
+                      <img class="" src="{{asset('frontend\assets\image\room.png')}}" alt="">
                       <!-- <img class="show-on-nothover" src="frontend\assets\image\bed red.svg" alt=""> -->
                       <!-- <img class="show-on-hover" src="frontend\assets\image\bed light.svg" alt=""> -->
                       <span  class="para-two">{{$pro->bedroom}}</span>
                     </div>
                     <div class="scale">
-                      <img class="" src="frontend\assets\image\garage.png" alt="">
+                      <img class="" src="{{asset('frontend\assets\image\garage.png')}}" alt="">
                       <!-- <img class="show-on-nothover" src="frontend\assets\image\scale red.svg" alt=""> -->
                       <!-- <img class="show-on-hover" src="frontend\assets\image\scale light.svg" alt=""> -->
                       <span class="para-two">2</span>
@@ -364,6 +365,7 @@
             </a>
             
           </div>
+          @endif
          @endforeach
         </div>
       </div>

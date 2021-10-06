@@ -80,6 +80,7 @@
       <div id="delux1" class="rooms-toggle room-active">
         <div class="row">
           @foreach($properties as $pro)
+          @if($pro->status == 1)
           <div  class="col-md-4">
             <a href="{{route('property.view',$pro->id)}}">
               <div class="rooms-box">
@@ -87,7 +88,7 @@
                   <img src="{{asset('storage/images/property/'.$pro->featured_photo)}}" alt="aaa">
                 </div>
                 <div class="rooms-info text-center">
-                  <span class="price">From <span class="value">AUD </span><span>{{$pro->rent}}</span></span>
+                  <span class="price">From <span class="value">AUD </span><span>{{$pro->rent}}</span></span><br>
                   <h1 class="head-four head_red pb-3 f-w-5"> {{$pro->name}}</h1>
                   <p class="para-two para_gray " style="color:red;">{!!str_limit($pro->facility,20)!!}</p>
                   <div class="rooms-scale">
@@ -114,9 +115,11 @@
             </a>
             
           </div>
+          @endif
          @endforeach
         </div>
       </div>
+     
     </div>
      
     </div>

@@ -75,6 +75,7 @@
       <div id="delux1" class="rooms-toggle room-active">
         <div class="row">
           @foreach($result as $pro)
+          @if($pro->status == 1)
           <div  class="col-md-4">
             <a href="{{route('property.view',$pro->id)}}">
               <div class="rooms-box">
@@ -109,6 +110,7 @@
             </a>
             
           </div>
+          @endif
          @endforeach
         </div>
       </div>

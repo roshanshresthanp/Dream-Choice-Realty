@@ -18,7 +18,7 @@ class CreateBookingsTable extends Migration
             $table->date('issued_date')->nullable();
             $table->date('expiry_date')->nullable();
             $table->string('appointment_date')->nullable();
-
+          
 
             $table->string('name')->nullable();
             $table->string('email')->nullable();
@@ -37,7 +37,7 @@ class CreateBookingsTable extends Migration
 
             $table->boolean('approve')->default('0')->nullable();
             $table->boolean('status')->default('0')->nullable();
-            $table->integer('user_id')->nullable();
+            $table->integer('user_id')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('property_id')->nullable();
             $table->integer('owner_id')->nullable();
             $table->timestamps();
