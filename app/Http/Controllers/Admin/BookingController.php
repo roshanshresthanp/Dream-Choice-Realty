@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use App\Mail\BookingMail;
+use App\Mail\BookingRejection;
 use App\Mail\UserDetail;
 use App\Mail\UserRegistration;
 use App\Models\ChargedAmount;
@@ -288,6 +289,12 @@ class BookingController extends Controller
         $del = Booking::where(['property_id'=>$book->property_id,'approve'=>0])->get();
         foreach($del as $d)
         {
+            $data =[
+                'email'=>$d->email,
+                'name'=>$d->name,
+                'property'=>Property::find($d->property_id)->name
+            ];
+            isset($data['email'])?Mail::to($data['email'])->send(new BookingRejection($data)):'';
             $d->delete();
         }
 

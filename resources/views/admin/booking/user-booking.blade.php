@@ -47,24 +47,6 @@ function confirmation(e)
 
       
     </script>
-    <script>
-        function updateList()
-        {
-          var input = document.getElementById('imageCollection');
-          var output = document.getElementById('imageList');
-          var children = "";
-          console.log(input.files);
-          for (var i = 0; i < input.files.length; ++i) {
-              children += '<small><li class="text-secondary">' + input.files.item(i).name + '</li></small>';
-          }
-          output.innerHTML = '<ul style="list-style: decimal;">'+children+'</ul>';     
-        }
-    
-        function removeList()
-        {
-          document.getElementById('imageList').innerHTML = "";
-        }
-      </script>
 
 @endsection
 
@@ -150,7 +132,7 @@ function confirmation(e)
                             <td>{{str_limit($book->facility,300)}}</td> --}}
                             
                             {{-- <td>{{$book->price}}</td> --}}
-                            <td>@if($book->approve==1) <span class="badge badge-success">Approved</span> @else <span class="badge badge-danger">Disapproved</span>@endif</td>
+                            <td>@if($book->approve==1) <span class="badge badge-success">Approved</span> @else <span class="badge badge-info">Pending</span>@endif</td>
                             <td>@if($book->approve==1) <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#example{{$book->id}}Center">
                                 Pay now</button>@else N/A  @endif </td>
                             {{-- <td> 
